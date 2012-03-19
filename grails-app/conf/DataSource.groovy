@@ -32,7 +32,7 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:hsqldb:file:camelCaseShotgunnersDb;shutdown=true"
+            url = "jdbc:hsqldb:file:qwertyuiopDb;shutdown=true"
         }
     }
 }
