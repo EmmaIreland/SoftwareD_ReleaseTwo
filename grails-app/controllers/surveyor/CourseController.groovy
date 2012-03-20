@@ -22,7 +22,7 @@ class CourseController {
     def save = {
         def courseInstance = new Course(params)
         if (courseInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'course.label', default: 'Course'), courseInstance.id])}"
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'course.label', default: 'Course'), courseInstance.toString()])}"
             redirect(action: "show", id: courseInstance.id)
         }
         else {
