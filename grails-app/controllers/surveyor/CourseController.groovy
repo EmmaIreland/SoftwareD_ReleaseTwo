@@ -48,6 +48,9 @@ class CourseController {
             redirect(action: "list")
         }
         else {
+			def sortedStudents = courseInstance.sortedEnrollments
+			
+			
             [courseInstance: courseInstance, sortedEnrollments: courseInstance.sortedEnrollments, User: User]
         }
     }
