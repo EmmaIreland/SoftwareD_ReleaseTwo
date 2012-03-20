@@ -9,7 +9,7 @@ class User {
 
     static constraints = {
         name blank:false
-        email email:true, blank:false
+        email email:true
     }
     
     String toString() {

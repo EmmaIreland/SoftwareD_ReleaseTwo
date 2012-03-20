@@ -21,14 +21,12 @@
                 <table>
                     <thead>
                         <tr>
-                        
-                            <g:sortableColumn property="id" title="${message(code: 'project.id.label', default: 'Id')}" />
-                        
+                                                
                             <g:sortableColumn property="name" title="${message(code: 'project.name.label', default: 'Name')}" />
                         
                             <g:sortableColumn property="description" title="${message(code: 'project.description.label', default: 'Description')}" />
                         
-                            <th><g:message code="project.course.label" default="Course" /></th>
+                            <g:sortableColumn property="course" title="${message(code: 'project.course.label', default: 'Course')}" />
                         
                         </tr>
                     </thead>
@@ -36,13 +34,11 @@
                     <g:each in="${projectInstanceList}" status="i" var="projectInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${projectInstance.id}">${fieldValue(bean: projectInstance, field: "id")}</g:link></td>
-                        
-                            <td>${fieldValue(bean: projectInstance, field: "name")}</td>
-                        
+                            <td><g:link action="show" id="${projectInstance.id}">${fieldValue(bean: projectInstance, field: "name")}</g:link></td>
+                                                
                             <td>${fieldValue(bean: projectInstance, field: "description")}</td>
                         
-                            <td>${fieldValue(bean: projectInstance, field: "course")}</td>
+                            <td><g:link controller="course" action="show" id="${projectInstance.course.id}">${fieldValue(bean: projectInstance, field: "course")}</g:link></td>
                         
                         </tr>
                     </g:each>

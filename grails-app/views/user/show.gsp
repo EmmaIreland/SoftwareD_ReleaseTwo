@@ -21,13 +21,7 @@
             <div class="dialog">
                 <table>
                     <tbody>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="user.id.label" default="Id" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: userInstance, field: "id")}</td>
-                            
-                        </tr>
+                                   
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="user.name.label" default="Name" /></td>
@@ -62,7 +56,7 @@
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
-                                <g:each in="${userInstance.enrollments}" var="e">
+                                <g:each in="${userInstance.enrollments.course}" var="e">
                                     <li><g:link controller="enrollment" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
@@ -76,7 +70,7 @@
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
-                                <g:each in="${userInstance.groupAssignments}" var="g">
+                                <g:each in="${userInstance.groupAssignments.team}" var="g">
                                     <li><g:link controller="groupAssignment" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>

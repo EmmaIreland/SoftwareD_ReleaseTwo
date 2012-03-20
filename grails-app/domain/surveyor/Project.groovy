@@ -10,7 +10,7 @@ class Project {
 
     static constraints = {
         name blank: false
-        description() // TODO should project description be able to be blank
+        description()
     }
     
     String toString() {

@@ -15,11 +15,12 @@
         	<div id="controllers">
         		<div id="title">Manage</div>
         		<div id="list">
-	        		<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-		        		<g:if test="${c.logicalPropertyName != 'survey'}">
-		                	<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.logicalPropertyName.capitalize()}</g:link></li>
-		                </g:if>
-	                </g:each>
+	        		<ul>
+					<li class="controller"><g:link controller="course">Courses</g:link></li>
+					<li class="controller"><g:link controller="project">Projects</g:link></li>
+					<li class="controller"><g:link controller="team">Groups</g:link></li>
+					<li class="controller"><g:link controller="user">Users</g:link></li>
+                </ul>
                 </div>
         	</div>
         </div>

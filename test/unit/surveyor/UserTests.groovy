@@ -24,11 +24,6 @@ class UserTests extends GrailsUnitTestCase {
         assertEquals user.errors['name'], 'blank'
     }
     
-    void testBlankEmail() {
-        User user = new User(name:'Test Name', email:'')
-        assertFalse user.validate()
-        assertEquals user.errors['email'], 'blank'
-    }
     
     void testInvalidEmail() {
         User user = new User(name:'Test Name', email:'Invalid Email')

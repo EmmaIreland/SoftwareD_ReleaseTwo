@@ -21,14 +21,7 @@
             <div class="dialog">
                 <table>
                     <tbody>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="project.id.label" default="Id" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: projectInstance, field: "id")}</td>
-                            
-                        </tr>
-                    
+                                       
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="project.name.label" default="Name" /></td>
                             
@@ -49,19 +42,7 @@
                             <td valign="top" class="value"><g:link controller="course" action="show" id="${projectInstance?.course?.id}">${projectInstance?.course?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="project.teams.label" default="Teams" /></td>
-                            
-                            <td valign="top" style="text-align: left;" class="value">
-                                <ul>
-                                <g:each in="${projectInstance.teams}" var="t">
-                                    <li><g:link controller="team" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
-                            
-                        </tr>
+                                         
                     
                     </tbody>
                 </table>
@@ -73,6 +54,48 @@
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </g:form>
             </div>
+         <br></br>
+            <h1> Project Groups </h1>
+            <div class="list">
+                <table>
+                    <thead>
+                        <tr> 
+                         
+                            <g:sortableColumn property="name" title="${message(code: 'project.team.label', default: 'Groups')}" />
+                        
+                            <th><g:message code="project.course.label" default="Students in Group" /></th>
+                            
+                            <th><g:message code="project.course.label" default="Description" /></th>
+                            
+                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <g:each in="${projectInstance.teams}" status="i" var="k">
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                        
+                            <td><g:link controller="team" action="show" id="${k.id}">${k?.encodeAsHTML()}</g:link> </td>
+                        
+                        	<td valign="top" style="text-align: left;" class="value">
+                               <ul>
+                                <g:each in="${k.groupAssignments.student}" var="s">
+                      
+                                    <li><g:link controller="user" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                               </ul>
+                           </td>
+                           <td valign="top" class="value">${fieldValue(bean: projectInstance, field: "description")}</td>
+                          
+                        </tr>
+                    </g:each>
+                    </tbody>
+                </table>
+                <div class="buttons">
+                	<span class="menuButton"><g:link class="create" controller="team" action="create" ><g:message code="Create Group" args="[entityName]"/></g:link></span>
+                </div>
+            </div>
+        
+        
         </div>
     </body>
 </html>
