@@ -48,10 +48,20 @@ class CourseController {
             redirect(action: "list")
         }
         else {
-			def sortedStudents = courseInstance.sortedEnrollments
+			def allUsers = User.list()
+
 			
+				
+					allUsers = allUsers - courseInstance.enrollments.collect { enrollment -> enrollment.student }
+					allUsers.remove(courseInstance.owner) 
+					
+					allUsers.sort({it.toLastNameFirstName()})
+					
+					print courseInstance.owner
+					println allUsers
+					println User
 			
-            [courseInstance: courseInstance, sortedEnrollments: courseInstance.sortedEnrollments, User: User]
+            [courseInstance: courseInstance, sortedEnrollments: courseInstance.sortedEnrollments, availableStudents: allUsers, hasAvailableStudents: (allUsers.size() > 0), User: User]
         }
     }
 

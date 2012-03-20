@@ -105,7 +105,7 @@
 											newSelect.setAttribute('id', 'studentIds' + newStudentCount);
 											newSelect.setAttribute('name', 'studentIds');
 											
-											<g:each in="${User.list().sort({it.lastName})}" var="user">
+											<g:each in="${availableStudents}" var="user">
 												var newOption = document.createElement('option');
 												newOption.setAttribute('value', "${fieldValue(bean: user, field: 'id')}");
 												var textNode = document.createTextNode("${user.toLastNameFirstName()}");

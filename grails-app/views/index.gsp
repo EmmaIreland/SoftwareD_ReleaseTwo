@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>CamelCaseShotgunner's Survey Tool'</title>
+        <title>Qwertyuiop's Survey Tool'</title>
         <meta name="layout" content="main" />
         <style type="text/css" media="screen">
         
@@ -18,7 +18,7 @@
     <body>
         <div id="pageBody">
             <h1>Welcome</h1>
-            <p>The CamelCaseShotgunner's Survey Tool will make your course management easier!</p>
+            <p>The Qwertyuiop Survey Tool will make your course management easier!</p>
         </div>
     </body>
 </html>
