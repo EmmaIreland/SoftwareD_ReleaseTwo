@@ -36,15 +36,7 @@
                                     <g:textField name="name" value="${teamInstance?.name}" />
                                 </td>
                             </tr>
-                            
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="name"><g:message code="team.description.label" default="Description" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: teamInstance, field: 'name', 'errors')}">
-                                    <g:textField name="name" value="${teamInstance?.description}" />
-                                </td>
-                            </tr>
+
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
