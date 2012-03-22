@@ -13,4 +13,8 @@ class Team {
     String toString() {
         name
     }
+    
+    def getSortedGroupAssignments() {
+        groupAssignments.sort{it.student.toLastNameFirstName()}
+    }
 }

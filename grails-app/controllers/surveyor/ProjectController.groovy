@@ -22,7 +22,7 @@ class ProjectController {
     def save = {
         def projectInstance = new Project(params)
         if (projectInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'project.label', default: 'Project'), projectInstance.id])}"
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'project.label', default: 'Project'), projectInstance.name])}"
             redirect(action: 'show', id: projectInstance.id)
         }
         else {
@@ -66,7 +66,7 @@ class ProjectController {
             }
             projectInstance.properties = params
             if (!projectInstance.hasErrors() && projectInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'project.label', default: 'Project'), projectInstance.id])}"
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'project.label', default: 'Project'), projectInstance.name])}"
                 redirect(action: 'show', id: projectInstance.id)
             }
             else {
@@ -84,11 +84,11 @@ class ProjectController {
         if (projectInstance) {
             try {
                 projectInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'project.label', default: 'Project'), params.id])}"
+                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'project.label', default: 'Project'), projectInstance.name])}"
                 redirect(action: 'list')
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'project.label', default: 'Project'), params.id])}"
+                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'project.label', default: 'Project'), projectInstance.name])}"
                 redirect(action: 'show', id: params.id)
             }
         }

@@ -22,7 +22,7 @@ class UserController {
     def save = {
         def userInstance = new User(params)
         if (userInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])}"
+            flash.message = "${message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.name])}"
             redirect(action: 'show', id: userInstance.id)
         }
         else {
@@ -66,7 +66,7 @@ class UserController {
             }
             userInstance.properties = params
             if (!userInstance.hasErrors() && userInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])}"
+                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.name])}"
                 redirect(action: 'show', id: userInstance.id)
             }
             else {
@@ -84,11 +84,11 @@ class UserController {
         if (userInstance) {
             try {
                 userInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), params.id])}"
+                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), userInstance.name])}"
                 redirect(action: 'list')
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'user.label', default: 'User'), params.id])}"
+                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'user.label', default: 'User'), userInstance.name])}"
                 redirect(action: 'show', id: params.id)
             }
         }

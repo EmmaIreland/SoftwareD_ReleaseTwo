@@ -48,7 +48,7 @@
                                     
 <ul>
 <g:each in="${teamInstance?.groupAssignments?}" var="g">
-    <li><g:link controller="groupAssignment" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></li>
+    <li><g:link controller="user" action="show" id="${g.student.id}">${g?.student.toLastNameFirstName().encodeAsHTML()}</g:link></li>
 </g:each>
 </ul>
 <g:link controller="groupAssignment" action="create" params="['team.id': teamInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment')])}</g:link>

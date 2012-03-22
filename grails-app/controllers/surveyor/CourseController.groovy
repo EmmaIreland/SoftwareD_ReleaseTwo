@@ -112,7 +112,7 @@ class CourseController {
 					enrollment.save(failOnError: true)
 				}
 
-				flash.message = "${message(code: 'default.updated.message', args: [message(code: 'course.label', default: 'Course'), courseInstance.id])}"
+				flash.message = "${message(code: 'default.updated.message', args: [message(code: 'course.label', default: 'Course'), courseInstance.toString()])}"
 				redirect(action: "show", id: courseInstance.id)
 			}
 			else {
@@ -134,11 +134,11 @@ class CourseController {
 		if (courseInstance) {
 			try {
 				courseInstance.delete(flush: true)
-				flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'course.label', default: 'Course'), params.id])}"
+				flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'course.label', default: 'Course'), courseInstance.toString()])}"
 				redirect(action: "list")
 			}
 			catch (org.springframework.dao.DataIntegrityViolationException e) {
-				flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'course.label', default: 'Course'), params.id])}"
+				flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'course.label', default: 'Course'), courseInstance.toString()])}"
 				redirect(action: "show", id: params.id)
 			}
 		}

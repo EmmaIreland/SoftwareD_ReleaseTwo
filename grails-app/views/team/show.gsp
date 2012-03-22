@@ -35,8 +35,8 @@
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
-                                <g:each in="${teamInstance.groupAssignments.student}" var="g">
-                                    <li><g:link controller="groupAssignment" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></li>
+                                <g:each in="${sortedGroupAssignments}" var="g">
+                                    <li><g:link controller="user" action="show" id="${g.student.id}">${g?.student.toLastNameFirstName().encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
                             </td>
