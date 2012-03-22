@@ -23,35 +23,26 @@
                 <g:renderErrors bean="${teamInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="save" >
+            
+            <g:form action="createAndSaveMany" >
                 <div class="dialog">
                     <table>
                         <tbody>
-                        
                             <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="name"><g:message code="team.name.label" default="Name" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: teamInstance, field: 'name', 'errors')}">
-                                    <g:textField name="name" value="${teamInstance?.name}" />
-                                </td>
-                            </tr>
-
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="project"><g:message code="team.project.label" default="Project" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: teamInstance, field: 'project', 'errors')}">
-                                    <g:select name="project.id" from="${surveyor.Project.list()}" optionKey="id" value="${teamInstance?.project?.id}"  />
-                                </td>
+                            	<td valign="top" class="name">
+                            		<label for="groupNumber">Please add number of groups: </label>
+                            	</td>
+                            	<td valign="top" class="value">
+                            		<g:textField name="groupNumber" value="${groupNumber}" />
+                            	</td>
                             </tr>
                         
                         </tbody>
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
+                	<g:hiddenField name="id" value="${courseID}" />
+                    <span class="button"><g:submitButton name="createAndSaveMany" class="createAndSaveMany" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
                 </div>
             </g:form>
         </div>

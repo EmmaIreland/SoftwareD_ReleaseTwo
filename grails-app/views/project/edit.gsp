@@ -59,20 +59,26 @@
                             </tr>
                         
                             <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="teams"><g:message code="project.teams.label" default="Teams" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: projectInstance, field: 'teams', 'errors')}">
-                                    
-<ul>
-<g:each in="${projectInstance?.teams?}" var="t">
-    <li><g:link controller="team" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="team" action="create" params="['project.id': projectInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'team.label', default: 'Team')])}</g:link>
+							<td valign="top" class="name"><label for="teams"><g:message
+										code="project.teams.label"
+										default="Groups for this Project" /> </label>
+							</td>
+							<td valign="top"
+								class="value ${hasErrors(bean: projectInstance, field: 'teams', 'errors')}">
 
-                                </td>
-                            </tr>
+								<ul>
+									<g:each in="${projectInstance?.teams?}" var="l">
+										<li><g:link controller="team" action="show"
+												id="${l.id}">
+												${l?.encodeAsHTML()}
+											</g:link></li>
+									</g:each>
+								</ul> <g:link controller="team" action="create"
+									params="['projectId': projectInstance?.id]">Add Groups to this Project</g:link><br />
+									
+                            
+							</td>
+						</tr>
                         
                         </tbody>
                     </table>

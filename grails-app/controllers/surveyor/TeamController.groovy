@@ -18,6 +18,36 @@ class TeamController {
         teamInstance.properties = params
         return [teamInstance: teamInstance]
     }
+    
+    
+    
+    def createAndSaveMany = {
+        println project.id
+        if(!isInteger(params.groupNumber)){
+                flash.message = "Please enter a positive integer"
+                redirect(action:"create", params:[projectId:params.id])
+        }
+        else{
+                def groupNum = params.groupNumber.toInteger()
+                def i
+                for(i = 0; i < groupNum; i++){
+                        def projectInstance = new Team(name:"Group ${i}", project: Project.findById(params.id))
+                        projectInstance.save(flush: true)
+                }
+                flash.message = i + " Groups Created"
+                redirect(controller: "project", action: "show", id: params.id)
+        }
+}
+
+def isInteger(num) {
+        def bool = false
+        if(num.isNumber() && (num.toInteger()>0)){
+                bool = true
+        }
+        bool
+}
+    
+    
 
     def save = {
         def teamInstance = new Team(params)
