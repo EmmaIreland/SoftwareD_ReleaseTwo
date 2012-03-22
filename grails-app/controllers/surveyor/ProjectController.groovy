@@ -68,7 +68,7 @@ class ProjectController {
             if (!projectInstance.hasErrors() && projectInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'project.label', default: 'Project'), projectInstance.name, projectInstance.id])}"
                 redirect(action: 'show', id: projectInstance.id)
-            }
+            } 
             else {
                 render(view: 'edit', model: [projectInstance: projectInstance])
             }

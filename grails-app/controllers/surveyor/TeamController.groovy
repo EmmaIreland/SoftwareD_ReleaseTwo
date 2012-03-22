@@ -24,7 +24,6 @@ class TeamController {
                 if(!isInteger(params.groupNumber)){
                         flash.message = "Please enter a positive integer"
                         redirect(action:"create", params:[projectId:params.id])
-                        println project.id
                 }
                 else{
                         def groupNum = params.groupNumber.toInteger()
