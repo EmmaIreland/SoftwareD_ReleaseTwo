@@ -31,4 +31,8 @@ class Survey {
             compatible
         }
     }
+    
+    String toString() {
+        name
+    }
 }

@@ -60,8 +60,7 @@ class CourseController {
 				}
 			}
 
-			allUsers.sort({it.toLastNameFirstName()})
-			allUsersExceptOwner.sort({it.toLastNameFirstName()})
+			allUsersExceptOwner.sort{it.toLastNameFirstName()}
 
 			[courseInstance: courseInstance, sortedEnrollments: courseInstance.sortedEnrollments, availableStudents: allUsersExceptOwner, hasAvailableStudents: (allUsers.size() > 0), User: User]
 		}

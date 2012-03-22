@@ -29,6 +29,6 @@ class Course {
     }
     
     def getSortedEnrollments() {
-        enrollments.sort({it.student.toLastNameFirstName()})
+        enrollments.sort{it.student.toLastNameFirstName()}
     }
 }

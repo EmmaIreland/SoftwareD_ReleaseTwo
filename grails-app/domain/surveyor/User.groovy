@@ -26,6 +26,6 @@ class User {
     
     def getLastName() {
         def nameParts = name.split()
-        nameParts[nameParts.size()-1]
+        nameParts.last()
     }
 }
