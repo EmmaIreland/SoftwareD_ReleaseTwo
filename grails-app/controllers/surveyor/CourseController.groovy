@@ -48,11 +48,11 @@ class CourseController {
 			redirect(action: "list")
 		}
 		else {
-			ArrayList allUsers = new ArrayList(User.list())
-			ArrayList allUsersExceptOwner = new ArrayList()
+			List allUsers = new ArrayList(User.list())
+			List allUsersExceptOwner = new ArrayList()
 
 
-			allUsers = allUsers - courseInstance.enrollments.collect { enrollment -> enrollment.student }
+			allUsers = allUsers - courseInstance.enrollments*.student
 
 			for(int i = 0; i < allUsers.size; i++){
 				if(allUsers.get(i).id!= courseInstance.owner.id){
@@ -62,9 +62,6 @@ class CourseController {
 
 			allUsers.sort({it.toLastNameFirstName()})
 			allUsersExceptOwner.sort({it.toLastNameFirstName()})
-			print courseInstance.owner
-			println allUsers
-			println allUsersExceptOwner
 
 			[courseInstance: courseInstance, sortedEnrollments: courseInstance.sortedEnrollments, availableStudents: allUsersExceptOwner, hasAvailableStudents: (allUsers.size() > 0), User: User]
 		}
