@@ -2,10 +2,10 @@ package surveyor
 
 class GroupAssignmentController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: 'POST', update: 'POST', delete: 'POST']
 
     def index = {
-        redirect(action: "list", params: params)
+        redirect(action: 'list', params: params)
     }
 
     def list = {
@@ -23,10 +23,10 @@ class GroupAssignmentController {
         def groupAssignmentInstance = new GroupAssignment(params)
         if (groupAssignmentInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), groupAssignmentInstance.id])}"
-            redirect(action: "show", id: groupAssignmentInstance.id)
+            redirect(action: 'show', id: groupAssignmentInstance.id)
         }
         else {
-            render(view: "create", model: [groupAssignmentInstance: groupAssignmentInstance])
+            render(view: 'create', model: [groupAssignmentInstance: groupAssignmentInstance])
         }
     }
 
@@ -34,7 +34,7 @@ class GroupAssignmentController {
         def groupAssignmentInstance = GroupAssignment.get(params.id)
         if (!groupAssignmentInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
-            redirect(action: "list")
+            redirect(action: 'list')
         }
         else {
             [groupAssignmentInstance: groupAssignmentInstance]
@@ -45,7 +45,7 @@ class GroupAssignmentController {
         def groupAssignmentInstance = GroupAssignment.get(params.id)
         if (!groupAssignmentInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
-            redirect(action: "list")
+            redirect(action: 'list')
         }
         else {
             return [groupAssignmentInstance: groupAssignmentInstance]
@@ -59,23 +59,23 @@ class GroupAssignmentController {
                 def version = params.version.toLong()
                 if (groupAssignmentInstance.version > version) {
                     
-                    groupAssignmentInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'groupAssignment.label', default: 'GroupAssignment')] as Object[], "Another user has updated this GroupAssignment while you were editing")
-                    render(view: "edit", model: [groupAssignmentInstance: groupAssignmentInstance])
+                    groupAssignmentInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [message(code: 'groupAssignment.label', default: 'GroupAssignment')] as Object[], 'Another user has updated this GroupAssignment while you were editing')
+                    render(view: 'edit', model: [groupAssignmentInstance: groupAssignmentInstance])
                     return
                 }
             }
             groupAssignmentInstance.properties = params
             if (!groupAssignmentInstance.hasErrors() && groupAssignmentInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), groupAssignmentInstance.id])}"
-                redirect(action: "show", id: groupAssignmentInstance.id)
+                redirect(action: 'show', id: groupAssignmentInstance.id)
             }
             else {
-                render(view: "edit", model: [groupAssignmentInstance: groupAssignmentInstance])
+                render(view: 'edit', model: [groupAssignmentInstance: groupAssignmentInstance])
             }
         }
         else {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
-            redirect(action: "list")
+            redirect(action: 'list')
         }
     }
 
@@ -85,16 +85,16 @@ class GroupAssignmentController {
             try {
                 groupAssignmentInstance.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
-                redirect(action: "list")
+                redirect(action: 'list')
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
-                redirect(action: "show", id: params.id)
+                redirect(action: 'show', id: params.id)
             }
         }
         else {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
-            redirect(action: "list")
+            redirect(action: 'list')
         }
     }
 }
