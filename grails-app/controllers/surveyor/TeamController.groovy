@@ -21,20 +21,27 @@ class TeamController {
     }
         
         def createAndSaveMany = {
-                if(!isInteger(params.groupNumber)){
-                        flash.message = "Please enter a positive integer"
+                if (!isInteger(params.groupNumber)){
+                        flash.message = "Please enter a positive integer"	
+						List studentList = Project.findById(params.id).course.enrollments*.student
+						println studentList
+						println studentList.size()
+						
                         redirect(action:"create", params:[projectId:params.id])
-                }
-                else{
+                
+				} else {
                         def groupNum = params.groupNumber.toInteger()
                         def i
-                        for(i = 0; i < groupNum; i++){
+                        for(i = 0; i < groupNum; i++) {
                                 def projectInstance = new Team(name:"Group ${i}", project: Project.findById(params.id))
                                 projectInstance.save(flush: true)
                         }
+						
                         flash.message = i + " Groups Created"
                         redirect(controller: "project", action: "show", id: params.id)
                 }
+				
+				
         }
         
         def isInteger(num) {
@@ -44,6 +51,39 @@ class TeamController {
                 }
                 bool
         } 
+		
+		
+		def createAndSaveRandom = {
+			if(!isInteger(params.groupNumber)) {
+					flash.message = "Please enter a positive integer"
+					redirect(action:"create", params:[projectId:params.id])
+			}
+			else{
+					def groupNum = params.groupNumber.toInteger()
+					List studentList = Project.findById(params.id).course.enrollments*.student
+					def i
+					List groupList = []
+					for (i = 0; i < groupNum; i++) {
+						def currentTeam = new Team(name:"Group ${i}", project: Project.findById(params.id))	
+							currentTeam.save(flush: true)
+						groupList.add(currentTeam)
+					}
+					
+					for (int k = 0; k < studentList.size(); k++) {
+						//groupList.get(k % groupNum).add(studentList.get(k))
+						def groupAssignment = new GroupAssignment(student:studentList.get(k), team:groupList.get(k % groupNum))
+							groupAssignment.save(flush: true)
+					}
+					
+					
+					flash.message = i + " Groups Created"
+					redirect(controller: "project", action: "show", id: params.id)
+			}
+			
+			
+						
+			
+	}
     
 
     def save = {
