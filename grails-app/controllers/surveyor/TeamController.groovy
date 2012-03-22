@@ -2,51 +2,49 @@ package surveyor
 
 class TeamController {
 
-    static allowedMethods = [save: 'POST', update: 'POST', delete: 'POST']
+
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
-        redirect(action: 'list', params: params)
+        redirect(action: "list", params: params)
     }
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [teamInstanceList: Team.list(params), teamInstanceTotal: Team.count()]
+        [teamsInstanceList: Team.list(params), teamsInstanceTotal: Team.count()]
     }
 
     def create = {
-        def teamInstance = new Team()
-        teamInstance.properties = params
-        return [teamInstance: teamInstance]
+        def teamsInstance = new Team()
+        teamsInstance.properties = params
+        return [teamsInstance: teamsInstance, courseID: params.projectId]
     }
-    
-    
-    
-    def createAndSaveMany = {
-        println project.id
-        if(!isInteger(params.groupNumber)){
-                flash.message = "Please enter a positive integer"
-                redirect(action:"create", params:[projectId:params.id])
-        }
-        else{
-                def groupNum = params.groupNumber.toInteger()
-                def i
-                for(i = 0; i < groupNum; i++){
-                        def projectInstance = new Team(name:"Group ${i}", project: Project.findById(params.id))
-                        projectInstance.save(flush: true)
+        
+        def createAndSaveMany = {
+                if(!isInteger(params.groupNumber)){
+                        flash.message = "Please enter a positive integer"
+                        redirect(action:"create", params:[projectId:params.id])
+                        println project.id
                 }
-                flash.message = i + " Groups Created"
-                redirect(controller: "project", action: "show", id: params.id)
+                else{
+                        def groupNum = params.groupNumber.toInteger()
+                        def i
+                        for(i = 0; i < groupNum; i++){
+                                def projectInstance = new Team(name:"Group ${i}", project: Project.findById(params.id))
+                                projectInstance.save(flush: true)
+                        }
+                        flash.message = i + " Groups Created"
+                        redirect(controller: "project", action: "show", id: params.id)
+                }
         }
-}
-
-def isInteger(num) {
-        def bool = false
-        if(num.isNumber() && (num.toInteger()>0)){
-                bool = true
-        }
-        bool
-}
-    
+        
+        def isInteger(num) {
+                def bool = false
+                if(num.isNumber() && (num.toInteger()>0)){
+                        bool = true
+                }
+                bool
+        } 
     
 
     def save = {

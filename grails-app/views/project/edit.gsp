@@ -50,17 +50,8 @@
                             </tr>
                         
                             <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="course"><g:message code="project.course.label" default="Course" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: projectInstance, field: 'course', 'errors')}">
-                                    <g:select name="course.id" from="${surveyor.Course.list()}" optionKey="id" value="${projectInstance?.course?.id}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
 							<td valign="top" class="name"><label for="teams"><g:message
-										code="project.teams.label"
+										code="project.groups.label"
 										default="Groups for this Project" /> </label>
 							</td>
 							<td valign="top"
@@ -84,6 +75,7 @@
                     </table>
                 </div>
                 <div class="buttons">
+               		<g:hiddenField name="course.id" value="${courseInstance}" />
                     <span class="button"><g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
                 </div>
