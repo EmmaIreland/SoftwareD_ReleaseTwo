@@ -137,13 +137,7 @@
 					</g:each>
 				</tbody>
 			</table>
-			<div class="buttons">
-				<span class="menuButton"><g:link class="create"
-						controller="team" action="create">
-						<g:message code="Create Group" args="[entityName]" />
-					</g:link>
-				</span>
-			</div>
+		
 		</div>
 
 

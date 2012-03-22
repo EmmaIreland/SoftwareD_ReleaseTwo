@@ -45,9 +45,12 @@
                     </tbody>
                 </table>
             </div>
+            
             <div class="paginateButtons">
                 <g:paginate total="${projectInstanceTotal}" />
             </div>
+            
+            		
         </div>
     </body>
 </html>

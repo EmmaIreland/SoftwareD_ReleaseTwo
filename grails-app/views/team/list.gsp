@@ -10,7 +10,7 @@
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="New Group" args="[entityName]" /></g:link></span>
+            
         </div>
         <div class="body">
             <h1><g:message code="Group List" args="[entityName]" /></h1>
@@ -29,12 +29,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${teamInstanceList}" status="i" var="teamInstance">
+                    <g:each in="${teamsInstanceList}" status="i" var="teamsInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${teamInstance.id}">${fieldValue(bean: teamInstance, field: "name")}</g:link></td>
+                            <td><g:link action="show" id="${teamsInstance.id}">${fieldValue(bean: teamsInstance, field: "name")}</g:link></td>
                                                 
-                            <td>${fieldValue(bean: teamInstance, field: "project")}</td>
+                            <td>${fieldValue(bean: teamsInstance, field: "project")}</td>
                         
                         </tr>
                     </g:each>
@@ -42,7 +42,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${teamInstanceTotal}" />
+                <g:paginate total="${teamsInstanceTotal}" />
             </div>
         </div>
     </body>
