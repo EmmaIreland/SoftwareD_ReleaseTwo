@@ -18,10 +18,11 @@ class TeamControllerTests extends ControllerUnitTestCase {
         super.tearDown()
     }
 
-/*    void testGroupCreation() {
-        mockDomain(Project)
+    void testGroupCreation() {
+/*        mockDomain(Project)
         releaseOne.params.groupNumber = 2
         releaseOne.createAndSaveMany()
         assertEquals 0, 'Group 0'.id
-    }*/
+        */
+    }
 }
