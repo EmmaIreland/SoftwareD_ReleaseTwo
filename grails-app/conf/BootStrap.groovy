@@ -2,9 +2,13 @@ import surveyor.*
 import grails.util.GrailsUtil
 
 class BootStrap {
+	
+	def noData() {
+		return Student.count() == 0
+	}
 
     def init = { servletContext ->
-        if ( GrailsUtil.environment != 'production' ) {
+        if (noData()) {
             User nic = new User(name: 'Nic McPhee', email: 'mcphee@gmail.com').save(failOnError:true)
             User sarah = new User(name: 'Sarah Buchanan', email: 'buchanan@gmail.com').save(failOnError:true)
             User simon = new User(name: 'Simon Tillier', email: 'tillier@gmail.com').save(failOnError:true)
