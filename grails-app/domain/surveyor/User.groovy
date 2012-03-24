@@ -5,7 +5,8 @@ class User {
     String name
     String email
     
-    static hasMany = [courses: Course, enrollments: Enrollment, groupAssignments: GroupAssignment]
+    static hasMany = [courses: Course, enrollments: Enrollment,
+		 groupAssignments: GroupAssignment, surveys:Survey]
 
     static constraints = {
         name blank:false

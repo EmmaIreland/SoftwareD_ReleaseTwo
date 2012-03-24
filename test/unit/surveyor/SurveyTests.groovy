@@ -57,6 +57,11 @@ class SurveyTests extends GrailsUnitTestCase {
         Survey testSurvey = new Survey(name: 'Only team', description: '', course: softwareDesign)
         assertTrue testSurvey.validate()
     }
+	
+	void testOnlyStudentGiven() {
+		Survey testSurvey = new Survey(name: 'Only team', description: '', student: nic)
+		assertTrue testSurvey.validate()
+	}
     
     void testInvalidteam() {
         Survey testSurvey = new Survey(name: 'Invalid team', description: '', course: softwareDesign, project: releaseOne, team: englishMajors)

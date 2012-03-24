@@ -5,7 +5,7 @@ class Survey {
     String description
     Date dueDate
     
-    static belongsTo = [course: Course, project: Project, team: Team]
+    static belongsTo = [course: Course, project: Project, team: Team, student: User]
 
     static constraints = {
         name blank: false
@@ -13,6 +13,7 @@ class Survey {
         dueDate nullable: true
         course nullable: true
         project nullable: true
+		student nullable: true
         team nullable: true, validator: { team, survey ->
             def course = survey.course
             def project = survey.project
