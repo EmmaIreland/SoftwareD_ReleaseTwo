@@ -4,7 +4,7 @@ import grails.util.GrailsUtil
 class BootStrap {
 	
 	def noData() {
-		return Student.count() == 0
+		return User.count() == 0
 	}
 
     def init = { servletContext ->
