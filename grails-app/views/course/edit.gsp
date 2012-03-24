@@ -72,6 +72,17 @@
                                 </td>
                             </tr>
                         
+                            
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="owner"><g:message code="course.owner.label" default="Owner" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: courseInstance, field: 'owner', 'errors')}">
+                                    <g:select name="owner.id" from="${surveyor.User.list()}" optionKey="id" value="${courseInstance?.owner?.id}"  />
+                                </td>
+                            </tr>
+                            
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="enrollments"><g:message code="course.enrollments.label" default="Enrollments" /></label>
@@ -152,15 +163,6 @@
 										<img src="${resource(dir:'images', file:'skin/add.png')}" alt="add Button" />
 										<span id="addButtonText">Enroll a student</span>
 									</div>
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="owner"><g:message code="course.owner.label" default="Owner" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: courseInstance, field: 'owner', 'errors')}">
-                                    <g:select name="owner.id" from="${surveyor.User.list()}" optionKey="id" value="${courseInstance?.owner?.id}"  />
                                 </td>
                             </tr>
                         
