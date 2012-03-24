@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" name="surveyor.UserTests" tests="4" time="0.049" timestamp="2012-03-24T22:21:03">
+  <properties />
+  <testcase classname="surveyor.UserTests" name="testBlankName" time="0.026" />
+  <testcase classname="surveyor.UserTests" name="testToString" time="0.004" />
+  <testcase classname="surveyor.UserTests" name="testValid" time="0.007" />
+  <testcase classname="surveyor.UserTests" name="testInvalidEmail" time="0.007" />
+  <system-out><![CDATA[--Output from testBlankName--
+--Output from testToString--
+--Output from testValid--
+--Output from testInvalidEmail--
+]]></system-out>
+  <system-err><![CDATA[--Output from testBlankName--
+--Output from testToString--
+--Output from testValid--
+--Output from testInvalidEmail--
+]]></system-err>
+</testsuite>

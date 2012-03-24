@@ -1,0 +1,31 @@
+Testsuite: surveyor.CourseTests
+Tests run: 8, Failures: 0, Errors: 0, Time elapsed: 0.081 sec
+------------- Standard Output ---------------
+--Output from testBlankName--
+--Output from testToString--
+--Output from testValidCourse--
+--Output from testBlankAbbreviation--
+--Output from testInvalidTerm--
+--Output from testSubTwoThousandYear--
+--Output from testNonYear--
+--Output from testOrphan--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testBlankName--
+--Output from testToString--
+--Output from testValidCourse--
+--Output from testBlankAbbreviation--
+--Output from testInvalidTerm--
+--Output from testSubTwoThousandYear--
+--Output from testNonYear--
+--Output from testOrphan--
+------------- ---------------- ---------------
+
+Testcase: testBlankName took 0.028 sec
+Testcase: testToString took 0.009 sec
+Testcase: testValidCourse took 0.006 sec
+Testcase: testBlankAbbreviation took 0.008 sec
+Testcase: testInvalidTerm took 0.006 sec
+Testcase: testSubTwoThousandYear took 0.006 sec
+Testcase: testNonYear took 0.007 sec
+Testcase: testOrphan took 0.007 sec

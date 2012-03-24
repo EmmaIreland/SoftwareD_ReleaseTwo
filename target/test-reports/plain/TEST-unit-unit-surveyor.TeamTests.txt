@@ -1,0 +1,16 @@
+Testsuite: surveyor.TeamTests
+Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 0.023 sec
+------------- Standard Output ---------------
+--Output from testBlankName--
+--Output from testToString--
+--Output from testValidGroup--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testBlankName--
+--Output from testToString--
+--Output from testValidGroup--
+------------- ---------------- ---------------
+
+Testcase: testBlankName took 0.011 sec
+Testcase: testToString took 0.003 sec
+Testcase: testValidGroup took 0.005 sec

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" name="surveyor.ProjectTests" tests="5" time="0.494" timestamp="2012-03-24T22:21:01">
+  <properties />
+  <testcase classname="surveyor.ProjectTests" name="testValidProject" time="0.416" />
+  <testcase classname="surveyor.ProjectTests" name="testBlankName" time="0.031" />
+  <testcase classname="surveyor.ProjectTests" name="testBlankDescription" time="0.008" />
+  <testcase classname="surveyor.ProjectTests" name="testNoCourse" time="0.013" />
+  <testcase classname="surveyor.ProjectTests" name="testToString" time="0.008" />
+  <system-out><![CDATA[--Output from testValidProject--
+--Output from testBlankName--
+--Output from testBlankDescription--
+--Output from testNoCourse--
+--Output from testToString--
+]]></system-out>
+  <system-err><![CDATA[--Output from testValidProject--
+--Output from testBlankName--
+--Output from testBlankDescription--
+--Output from testNoCourse--
+--Output from testToString--
+]]></system-err>
+</testsuite>

@@ -1,0 +1,22 @@
+Testsuite: surveyor.ProjectTests
+Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 0.494 sec
+------------- Standard Output ---------------
+--Output from testValidProject--
+--Output from testBlankName--
+--Output from testBlankDescription--
+--Output from testNoCourse--
+--Output from testToString--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testValidProject--
+--Output from testBlankName--
+--Output from testBlankDescription--
+--Output from testNoCourse--
+--Output from testToString--
+------------- ---------------- ---------------
+
+Testcase: testValidProject took 0.416 sec
+Testcase: testBlankName took 0.031 sec
+Testcase: testBlankDescription took 0.008 sec
+Testcase: testNoCourse took 0.013 sec
+Testcase: testToString took 0.008 sec

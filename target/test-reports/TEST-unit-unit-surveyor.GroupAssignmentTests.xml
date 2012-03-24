@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" name="surveyor.GroupAssignmentTests" tests="5" time="0.304" timestamp="2012-03-24T22:21:02">
+  <properties />
+  <testcase classname="surveyor.GroupAssignmentTests" name="testToString" time="0.201" />
+  <testcase classname="surveyor.GroupAssignmentTests" name="testStandardGroupAssignment" time="0.028" />
+  <testcase classname="surveyor.GroupAssignmentTests" name="testEmptyGroupAssignment" time="0.026" />
+  <testcase classname="surveyor.GroupAssignmentTests" name="testDuplicatedGroupAssignment" time="0.025" />
+  <testcase classname="surveyor.GroupAssignmentTests" name="testAssignUserNotInClass" time="0.019" />
+  <system-out><![CDATA[--Output from testToString--
+--Output from testStandardGroupAssignment--
+--Output from testEmptyGroupAssignment--
+--Output from testDuplicatedGroupAssignment--
+--Output from testAssignUserNotInClass--
+]]></system-out>
+  <system-err><![CDATA[--Output from testToString--
+--Output from testStandardGroupAssignment--
+--Output from testEmptyGroupAssignment--
+--Output from testDuplicatedGroupAssignment--
+--Output from testAssignUserNotInClass--
+]]></system-err>
+</testsuite>

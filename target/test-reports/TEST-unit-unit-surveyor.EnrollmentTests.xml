@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" name="surveyor.EnrollmentTests" tests="4" time="0.066" timestamp="2012-03-24T22:21:03">
+  <properties />
+  <testcase classname="surveyor.EnrollmentTests" name="testToString" time="0.019" />
+  <testcase classname="surveyor.EnrollmentTests" name="testEnrollment" time="0.015" />
+  <testcase classname="surveyor.EnrollmentTests" name="testNullEnrollment" time="0.014" />
+  <testcase classname="surveyor.EnrollmentTests" name="testNoDuplicates" time="0.016" />
+  <system-out><![CDATA[--Output from testToString--
+--Output from testEnrollment--
+--Output from testNullEnrollment--
+--Output from testNoDuplicates--
+]]></system-out>
+  <system-err><![CDATA[--Output from testToString--
+--Output from testEnrollment--
+--Output from testNullEnrollment--
+--Output from testNoDuplicates--
+]]></system-err>
+</testsuite>

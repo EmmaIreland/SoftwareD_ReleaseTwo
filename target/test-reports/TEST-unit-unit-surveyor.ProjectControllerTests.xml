@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" name="surveyor.ProjectControllerTests" tests="1" time="0.108" timestamp="2012-03-24T22:21:03">
+  <properties />
+  <testcase classname="surveyor.ProjectControllerTests" name="testSomething" time="0.106" />
+  <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+</testsuite>

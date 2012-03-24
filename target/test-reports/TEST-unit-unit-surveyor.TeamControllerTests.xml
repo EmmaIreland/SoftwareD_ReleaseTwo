@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="1" failures="0" hostname="rynite.morris.umn.edu" name="surveyor.TeamControllerTests" tests="1" time="0.196" timestamp="2012-03-24T22:21:03">
+  <properties />
+  <testcase classname="surveyor.TeamControllerTests" name="testGroupCreation" time="0.193">
+    <error message="No signature of method: surveyor.Team.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[flush:true]]
+Possible solutions: wait(), any(), wait(long), sleep(long), isCase(java.lang.Object), each(groovy.lang.Closure)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: surveyor.Team.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[flush:true]]
+Possible solutions: wait(), any(), wait(long), sleep(long), isCase(java.lang.Object), each(groovy.lang.Closure)
+	at surveyor.TeamController$_closure4.doCall(TeamController.groovy:37)
+	at surveyor.TeamController$_closure4.doCall(TeamController.groovy)
+	at surveyor.TeamControllerTests.testGroupCreation(TeamControllerTests.groovy:28)
+	at TestApp$_run_closure4.doCall(TestApp:271)
+	at TestApp$_run_closure4.call(TestApp)
+	at TestApp$_run_closure2.doCall(TestApp:228)
+	at TestApp$_run_closure1_closure21.doCall(TestApp:187)
+	at TestApp$_run_closure1.doCall(TestApp:174)
+	at TestApp$_run_closure1.doCall(TestApp:82)
+	at gant.Gant$_dispatch_closure5.doCall(Gant.groovy:381)
+	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy:415)
+	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:427)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:415)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.executeTargets(Gant.groovy:590)
+	at gant.Gant.executeTargets(Gant.groovy:589)
+</error>
+  </testcase>
+  <system-out><![CDATA[--Output from testGroupCreation--
+]]></system-out>
+  <system-err><![CDATA[--Output from testGroupCreation--
+]]></system-err>
+</testsuite>

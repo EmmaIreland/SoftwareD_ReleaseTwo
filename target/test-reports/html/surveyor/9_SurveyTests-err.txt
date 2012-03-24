@@ -1,0 +1,10 @@
+--Output from testValidSurvey--
+--Output from testNoNameSurvey--
+--Output from testAllThatCanBeEmpty--
+--Output from testOnlyteamGiven--
+--Output from testOnlyProjectGiven--
+--Output from testOnlyCourseGiven--
+--Output from testInvalidteam--
+--Output from testInvalidProject--
+--Output from testInvalidCourse--
+

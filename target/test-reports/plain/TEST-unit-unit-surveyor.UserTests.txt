@@ -1,0 +1,19 @@
+Testsuite: surveyor.UserTests
+Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 0.049 sec
+------------- Standard Output ---------------
+--Output from testBlankName--
+--Output from testToString--
+--Output from testValid--
+--Output from testInvalidEmail--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testBlankName--
+--Output from testToString--
+--Output from testValid--
+--Output from testInvalidEmail--
+------------- ---------------- ---------------
+
+Testcase: testBlankName took 0.026 sec
+Testcase: testToString took 0.004 sec
+Testcase: testValid took 0.007 sec
+Testcase: testInvalidEmail took 0.007 sec

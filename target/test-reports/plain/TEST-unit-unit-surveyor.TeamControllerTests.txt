@@ -1,0 +1,36 @@
+Testsuite: surveyor.TeamControllerTests
+Tests run: 1, Failures: 0, Errors: 1, Time elapsed: 0.196 sec
+------------- Standard Output ---------------
+--Output from testGroupCreation--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testGroupCreation--
+------------- ---------------- ---------------
+
+Testcase: testGroupCreation took 0.185 sec
+	Caused an ERROR
+No signature of method: surveyor.Team.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[flush:true]]
+Possible solutions: wait(), any(), wait(long), sleep(long), isCase(java.lang.Object), each(groovy.lang.Closure)
+groovy.lang.MissingMethodException: No signature of method: surveyor.Team.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[flush:true]]
+Possible solutions: wait(), any(), wait(long), sleep(long), isCase(java.lang.Object), each(groovy.lang.Closure)
+	at surveyor.TeamController$_closure4.doCall(TeamController.groovy:37)
+	at surveyor.TeamController$_closure4.doCall(TeamController.groovy)
+	at surveyor.TeamControllerTests.testGroupCreation(TeamControllerTests.groovy:28)
+	at TestApp$_run_closure4.doCall(TestApp:271)
+	at TestApp$_run_closure4.call(TestApp)
+	at TestApp$_run_closure2.doCall(TestApp:228)
+	at TestApp$_run_closure1_closure21.doCall(TestApp:187)
+	at TestApp$_run_closure1.doCall(TestApp:174)
+	at TestApp$_run_closure1.doCall(TestApp:82)
+	at gant.Gant$_dispatch_closure5.doCall(Gant.groovy:381)
+	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy:415)
+	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:427)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:415)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.executeTargets(Gant.groovy:590)
+	at gant.Gant.executeTargets(Gant.groovy:589)
+

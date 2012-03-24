@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="0" name="CourseControllerTests" package="surveyor" tests="1" time="0.246" timestamp="2012-03-24T22:21:16">
+      <properties />
+
+      <testcase classname="surveyor.CourseControllerTests" name="testSomething" time="0.246" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="1" name="CourseTests" package="surveyor" tests="8" time="0.081" timestamp="2012-03-24T22:21:02">
+      <properties />
+
+      <testcase classname="surveyor.CourseTests" name="testBlankName" time="0.028" />
+
+      <testcase classname="surveyor.CourseTests" name="testToString" time="0.009" />
+
+      <testcase classname="surveyor.CourseTests" name="testValidCourse" time="0.006" />
+
+      <testcase classname="surveyor.CourseTests" name="testBlankAbbreviation" time="0.008" />
+
+      <testcase classname="surveyor.CourseTests" name="testInvalidTerm" time="0.006" />
+
+      <testcase classname="surveyor.CourseTests" name="testSubTwoThousandYear" time="0.006" />
+
+      <testcase classname="surveyor.CourseTests" name="testNonYear" time="0.007" />
+
+      <testcase classname="surveyor.CourseTests" name="testOrphan" time="0.007" />
+
+      <system-out><![CDATA[--Output from testBlankName--
+--Output from testToString--
+--Output from testValidCourse--
+--Output from testBlankAbbreviation--
+--Output from testInvalidTerm--
+--Output from testSubTwoThousandYear--
+--Output from testNonYear--
+--Output from testOrphan--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testBlankName--
+--Output from testToString--
+--Output from testValidCourse--
+--Output from testBlankAbbreviation--
+--Output from testInvalidTerm--
+--Output from testSubTwoThousandYear--
+--Output from testNonYear--
+--Output from testOrphan--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="2" name="EnrollmentControllerTests" package="surveyor" tests="1" time="0.076" timestamp="2012-03-24T22:21:03">
+      <properties />
+
+      <testcase classname="surveyor.EnrollmentControllerTests" name="testSomething" time="0.073" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="3" name="EnrollmentTests" package="surveyor" tests="4" time="0.066" timestamp="2012-03-24T22:21:03">
+      <properties />
+
+      <testcase classname="surveyor.EnrollmentTests" name="testToString" time="0.019" />
+
+      <testcase classname="surveyor.EnrollmentTests" name="testEnrollment" time="0.015" />
+
+      <testcase classname="surveyor.EnrollmentTests" name="testNullEnrollment" time="0.014" />
+
+      <testcase classname="surveyor.EnrollmentTests" name="testNoDuplicates" time="0.016" />
+
+      <system-out><![CDATA[--Output from testToString--
+--Output from testEnrollment--
+--Output from testNullEnrollment--
+--Output from testNoDuplicates--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testToString--
+--Output from testEnrollment--
+--Output from testNullEnrollment--
+--Output from testNoDuplicates--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="4" name="GroupAssignmentControllerTests" package="surveyor" tests="1" time="0.094" timestamp="2012-03-24T22:21:03">
+      <properties />
+
+      <testcase classname="surveyor.GroupAssignmentControllerTests" name="testSomething" time="0.089" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="5" name="GroupAssignmentTests" package="surveyor" tests="5" time="0.304" timestamp="2012-03-24T22:21:02">
+      <properties />
+
+      <testcase classname="surveyor.GroupAssignmentTests" name="testToString" time="0.201" />
+
+      <testcase classname="surveyor.GroupAssignmentTests" name="testStandardGroupAssignment" time="0.028" />
+
+      <testcase classname="surveyor.GroupAssignmentTests" name="testEmptyGroupAssignment" time="0.026" />
+
+      <testcase classname="surveyor.GroupAssignmentTests" name="testDuplicatedGroupAssignment" time="0.025" />
+
+      <testcase classname="surveyor.GroupAssignmentTests" name="testAssignUserNotInClass" time="0.019" />
+
+      <system-out><![CDATA[--Output from testToString--
+--Output from testStandardGroupAssignment--
+--Output from testEmptyGroupAssignment--
+--Output from testDuplicatedGroupAssignment--
+--Output from testAssignUserNotInClass--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testToString--
+--Output from testStandardGroupAssignment--
+--Output from testEmptyGroupAssignment--
+--Output from testDuplicatedGroupAssignment--
+--Output from testAssignUserNotInClass--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="6" name="ProjectControllerTests" package="surveyor" tests="1" time="0.108" timestamp="2012-03-24T22:21:03">
+      <properties />
+
+      <testcase classname="surveyor.ProjectControllerTests" name="testSomething" time="0.106" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="7" name="ProjectTests" package="surveyor" tests="5" time="0.494" timestamp="2012-03-24T22:21:01">
+      <properties />
+
+      <testcase classname="surveyor.ProjectTests" name="testValidProject" time="0.416" />
+
+      <testcase classname="surveyor.ProjectTests" name="testBlankName" time="0.031" />
+
+      <testcase classname="surveyor.ProjectTests" name="testBlankDescription" time="0.008" />
+
+      <testcase classname="surveyor.ProjectTests" name="testNoCourse" time="0.013" />
+
+      <testcase classname="surveyor.ProjectTests" name="testToString" time="0.008" />
+
+      <system-out><![CDATA[--Output from testValidProject--
+--Output from testBlankName--
+--Output from testBlankDescription--
+--Output from testNoCourse--
+--Output from testToString--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testValidProject--
+--Output from testBlankName--
+--Output from testBlankDescription--
+--Output from testNoCourse--
+--Output from testToString--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="8" name="SurveyControllerTests" package="surveyor" tests="1" time="0.315" timestamp="2012-03-24T22:21:02">
+      <properties />
+
+      <testcase classname="surveyor.SurveyControllerTests" name="testSomething" time="0.312" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="9" name="SurveyTests" package="surveyor" tests="9" time="0.1" timestamp="2012-03-24T22:21:03">
+      <properties />
+
+      <testcase classname="surveyor.SurveyTests" name="testValidSurvey" time="0.037" />
+
+      <testcase classname="surveyor.SurveyTests" name="testNoNameSurvey" time="0.012" />
+
+      <testcase classname="surveyor.SurveyTests" name="testAllThatCanBeEmpty" time="0.006" />
+
+      <testcase classname="surveyor.SurveyTests" name="testOnlyteamGiven" time="0.008" />
+
+      <testcase classname="surveyor.SurveyTests" name="testOnlyProjectGiven" time="0.007" />
+
+      <testcase classname="surveyor.SurveyTests" name="testOnlyCourseGiven" time="0.006" />
+
+      <testcase classname="surveyor.SurveyTests" name="testInvalidteam" time="0.005" />
+
+      <testcase classname="surveyor.SurveyTests" name="testInvalidProject" time="0.006" />
+
+      <testcase classname="surveyor.SurveyTests" name="testInvalidCourse" time="0.006" />
+
+      <system-out><![CDATA[--Output from testValidSurvey--
+--Output from testNoNameSurvey--
+--Output from testAllThatCanBeEmpty--
+--Output from testOnlyteamGiven--
+--Output from testOnlyProjectGiven--
+--Output from testOnlyCourseGiven--
+--Output from testInvalidteam--
+--Output from testInvalidProject--
+--Output from testInvalidCourse--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testValidSurvey--
+--Output from testNoNameSurvey--
+--Output from testAllThatCanBeEmpty--
+--Output from testOnlyteamGiven--
+--Output from testOnlyProjectGiven--
+--Output from testOnlyCourseGiven--
+--Output from testInvalidteam--
+--Output from testInvalidProject--
+--Output from testInvalidCourse--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="1" failures="0" hostname="rynite.morris.umn.edu" id="10" name="TeamControllerTests" package="surveyor" tests="1" time="0.196" timestamp="2012-03-24T22:21:03">
+      <properties />
+
+      <testcase classname="surveyor.TeamControllerTests" name="testGroupCreation" time="0.193">
+          <error message="No signature of method: surveyor.Team.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[flush:true]] Possible solutions: wait(), any(), wait(long), sleep(long), isCase(java.lang.Object), each(groovy.lang.Closure)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: surveyor.Team.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[flush:true]]
+Possible solutions: wait(), any(), wait(long), sleep(long), isCase(java.lang.Object), each(groovy.lang.Closure)
+	at surveyor.TeamController$_closure4.doCall(TeamController.groovy:37)
+	at surveyor.TeamController$_closure4.doCall(TeamController.groovy)
+	at surveyor.TeamControllerTests.testGroupCreation(TeamControllerTests.groovy:28)
+	at TestApp$_run_closure4.doCall(TestApp:271)
+	at TestApp$_run_closure4.call(TestApp)
+	at TestApp$_run_closure2.doCall(TestApp:228)
+	at TestApp$_run_closure1_closure21.doCall(TestApp:187)
+	at TestApp$_run_closure1.doCall(TestApp:174)
+	at TestApp$_run_closure1.doCall(TestApp:82)
+	at gant.Gant$_dispatch_closure5.doCall(Gant.groovy:381)
+	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy:415)
+	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy)
+	at gant.Gant.withBuildListeners(Gant.groovy:427)
+	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+	at gant.Gant$this$2$withBuildListeners.callCurrent(Unknown Source)
+	at gant.Gant.dispatch(Gant.groovy:415)
+	at gant.Gant.this$2$dispatch(Gant.groovy)
+	at gant.Gant.invokeMethod(Gant.groovy)
+	at gant.Gant.executeTargets(Gant.groovy:590)
+	at gant.Gant.executeTargets(Gant.groovy:589)
+</error>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from testGroupCreation--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testGroupCreation--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="11" name="TeamTests" package="surveyor" tests="3" time="0.023" timestamp="2012-03-24T22:21:03">
+      <properties />
+
+      <testcase classname="surveyor.TeamTests" name="testBlankName" time="0.011" />
+
+      <testcase classname="surveyor.TeamTests" name="testToString" time="0.003" />
+
+      <testcase classname="surveyor.TeamTests" name="testValidGroup" time="0.005" />
+
+      <system-out><![CDATA[--Output from testBlankName--
+--Output from testToString--
+--Output from testValidGroup--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testBlankName--
+--Output from testToString--
+--Output from testValidGroup--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="12" name="UserControllerTests" package="surveyor" tests="1" time="0.064" timestamp="2012-03-24T22:21:03">
+      <properties />
+
+      <testcase classname="surveyor.UserControllerTests" name="testSomething" time="0.059" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" id="13" name="UserTests" package="surveyor" tests="4" time="0.049" timestamp="2012-03-24T22:21:03">
+      <properties />
+
+      <testcase classname="surveyor.UserTests" name="testBlankName" time="0.026" />
+
+      <testcase classname="surveyor.UserTests" name="testToString" time="0.004" />
+
+      <testcase classname="surveyor.UserTests" name="testValid" time="0.007" />
+
+      <testcase classname="surveyor.UserTests" name="testInvalidEmail" time="0.007" />
+
+      <system-out><![CDATA[--Output from testBlankName--
+--Output from testToString--
+--Output from testValid--
+--Output from testInvalidEmail--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testBlankName--
+--Output from testToString--
+--Output from testValid--
+--Output from testInvalidEmail--
+]]></system-err>
+
+  </testsuite>
+</testsuites>

@@ -1,0 +1,6 @@
+--Output from testToString--
+--Output from testStandardGroupAssignment--
+--Output from testEmptyGroupAssignment--
+--Output from testDuplicatedGroupAssignment--
+--Output from testAssignUserNotInClass--
+

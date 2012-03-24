@@ -1,0 +1,19 @@
+Testsuite: surveyor.EnrollmentTests
+Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 0.066 sec
+------------- Standard Output ---------------
+--Output from testToString--
+--Output from testEnrollment--
+--Output from testNullEnrollment--
+--Output from testNoDuplicates--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testToString--
+--Output from testEnrollment--
+--Output from testNullEnrollment--
+--Output from testNoDuplicates--
+------------- ---------------- ---------------
+
+Testcase: testToString took 0.019 sec
+Testcase: testEnrollment took 0.015 sec
+Testcase: testNullEnrollment took 0.014 sec
+Testcase: testNoDuplicates took 0.016 sec

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" name="surveyor.SurveyTests" tests="9" time="0.1" timestamp="2012-03-24T22:21:03">
+  <properties />
+  <testcase classname="surveyor.SurveyTests" name="testValidSurvey" time="0.037" />
+  <testcase classname="surveyor.SurveyTests" name="testNoNameSurvey" time="0.012" />
+  <testcase classname="surveyor.SurveyTests" name="testAllThatCanBeEmpty" time="0.006" />
+  <testcase classname="surveyor.SurveyTests" name="testOnlyteamGiven" time="0.008" />
+  <testcase classname="surveyor.SurveyTests" name="testOnlyProjectGiven" time="0.007" />
+  <testcase classname="surveyor.SurveyTests" name="testOnlyCourseGiven" time="0.006" />
+  <testcase classname="surveyor.SurveyTests" name="testInvalidteam" time="0.005" />
+  <testcase classname="surveyor.SurveyTests" name="testInvalidProject" time="0.006" />
+  <testcase classname="surveyor.SurveyTests" name="testInvalidCourse" time="0.006" />
+  <system-out><![CDATA[--Output from testValidSurvey--
+--Output from testNoNameSurvey--
+--Output from testAllThatCanBeEmpty--
+--Output from testOnlyteamGiven--
+--Output from testOnlyProjectGiven--
+--Output from testOnlyCourseGiven--
+--Output from testInvalidteam--
+--Output from testInvalidProject--
+--Output from testInvalidCourse--
+]]></system-out>
+  <system-err><![CDATA[--Output from testValidSurvey--
+--Output from testNoNameSurvey--
+--Output from testAllThatCanBeEmpty--
+--Output from testOnlyteamGiven--
+--Output from testOnlyProjectGiven--
+--Output from testOnlyCourseGiven--
+--Output from testInvalidteam--
+--Output from testInvalidProject--
+--Output from testInvalidCourse--
+]]></system-err>
+</testsuite>

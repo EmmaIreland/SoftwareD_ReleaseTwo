@@ -1,0 +1,34 @@
+Testsuite: surveyor.SurveyTests
+Tests run: 9, Failures: 0, Errors: 0, Time elapsed: 0.1 sec
+------------- Standard Output ---------------
+--Output from testValidSurvey--
+--Output from testNoNameSurvey--
+--Output from testAllThatCanBeEmpty--
+--Output from testOnlyteamGiven--
+--Output from testOnlyProjectGiven--
+--Output from testOnlyCourseGiven--
+--Output from testInvalidteam--
+--Output from testInvalidProject--
+--Output from testInvalidCourse--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testValidSurvey--
+--Output from testNoNameSurvey--
+--Output from testAllThatCanBeEmpty--
+--Output from testOnlyteamGiven--
+--Output from testOnlyProjectGiven--
+--Output from testOnlyCourseGiven--
+--Output from testInvalidteam--
+--Output from testInvalidProject--
+--Output from testInvalidCourse--
+------------- ---------------- ---------------
+
+Testcase: testValidSurvey took 0.037 sec
+Testcase: testNoNameSurvey took 0.012 sec
+Testcase: testAllThatCanBeEmpty took 0.006 sec
+Testcase: testOnlyteamGiven took 0.008 sec
+Testcase: testOnlyProjectGiven took 0.007 sec
+Testcase: testOnlyCourseGiven took 0.006 sec
+Testcase: testInvalidteam took 0.005 sec
+Testcase: testInvalidProject took 0.006 sec
+Testcase: testInvalidCourse took 0.006 sec

@@ -1,0 +1,22 @@
+Testsuite: surveyor.GroupAssignmentTests
+Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 0.304 sec
+------------- Standard Output ---------------
+--Output from testToString--
+--Output from testStandardGroupAssignment--
+--Output from testEmptyGroupAssignment--
+--Output from testDuplicatedGroupAssignment--
+--Output from testAssignUserNotInClass--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testToString--
+--Output from testStandardGroupAssignment--
+--Output from testEmptyGroupAssignment--
+--Output from testDuplicatedGroupAssignment--
+--Output from testAssignUserNotInClass--
+------------- ---------------- ---------------
+
+Testcase: testToString took 0.201 sec
+Testcase: testStandardGroupAssignment took 0.028 sec
+Testcase: testEmptyGroupAssignment took 0.026 sec
+Testcase: testDuplicatedGroupAssignment took 0.025 sec
+Testcase: testAssignUserNotInClass took 0.019 sec

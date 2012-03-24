@@ -1,0 +1,6 @@
+--Output from testValidProject--
+--Output from testBlankName--
+--Output from testBlankDescription--
+--Output from testNoCourse--
+--Output from testToString--
+

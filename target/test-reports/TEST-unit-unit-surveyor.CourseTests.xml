@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="rynite.morris.umn.edu" name="surveyor.CourseTests" tests="8" time="0.081" timestamp="2012-03-24T22:21:02">
+  <properties />
+  <testcase classname="surveyor.CourseTests" name="testBlankName" time="0.028" />
+  <testcase classname="surveyor.CourseTests" name="testToString" time="0.009" />
+  <testcase classname="surveyor.CourseTests" name="testValidCourse" time="0.006" />
+  <testcase classname="surveyor.CourseTests" name="testBlankAbbreviation" time="0.008" />
+  <testcase classname="surveyor.CourseTests" name="testInvalidTerm" time="0.006" />
+  <testcase classname="surveyor.CourseTests" name="testSubTwoThousandYear" time="0.006" />
+  <testcase classname="surveyor.CourseTests" name="testNonYear" time="0.007" />
+  <testcase classname="surveyor.CourseTests" name="testOrphan" time="0.007" />
+  <system-out><![CDATA[--Output from testBlankName--
+--Output from testToString--
+--Output from testValidCourse--
+--Output from testBlankAbbreviation--
+--Output from testInvalidTerm--
+--Output from testSubTwoThousandYear--
+--Output from testNonYear--
+--Output from testOrphan--
+]]></system-out>
+  <system-err><![CDATA[--Output from testBlankName--
+--Output from testToString--
+--Output from testValidCourse--
+--Output from testBlankAbbreviation--
+--Output from testInvalidTerm--
+--Output from testSubTwoThousandYear--
+--Output from testNonYear--
+--Output from testOrphan--
+]]></system-err>
+</testsuite>
