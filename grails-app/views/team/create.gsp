@@ -42,7 +42,9 @@
                 </div>
                 <div class="buttons">
                 	<g:hiddenField name="id" value="${courseID}" />
-                    <span class="button"><g:submitButton name="createAndSaveMany" class="createAndSaveMany" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
+                    <span class="button"><g:submitButton name="createAndSaveMany" class="save" value="${message(code: 'default.bon.create.label', default: 'Create Groups')}" /></span>
+                	<span class="button"><g:actionSubmit name="createAndSaveRandom" class="save" action="createAndSaveRandom" value="${message(code: 'default.buon.cate.label', default: 'Create Groups With Random Students')}" /></span>
+                	
                 </div>
             </g:form>
         </div>

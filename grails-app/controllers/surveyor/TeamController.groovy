@@ -61,6 +61,8 @@ class TeamController {
 			else{
 					def groupNum = params.groupNumber.toInteger()
 					List studentList = Project.findById(params.id).course.enrollments*.student
+					
+					//List currentGroups = Project.findById(params.id).teams.list()					
 					def i
 					List groupList = []
 					for (i = 0; i < groupNum; i++) {
@@ -69,20 +71,23 @@ class TeamController {
 						groupList.add(currentTeam)
 					}
 					
-					for (int k = 0; k < studentList.size(); k++) {
-						//groupList.get(k % groupNum).add(studentList.get(k))
-						def groupAssignment = new GroupAssignment(student:studentList.get(k), team:groupList.get(k % groupNum))
-							groupAssignment.save(flush: true)
-					}
 					
+					
+					for (int k = 0; k < studentList.size(); k++) {	
+//						def result = true
+//						for (int j = 0; j < currentGroups.size(); j++) {
+//							if (GroupAssignment.findByUserAndTeam(studentList.get(k), currentGroups.get(j))) {
+//								result = false
+//							}								
+//						}								
+
+							def groupAssignment = new GroupAssignment(student:studentList.get(k), team:groupList.get(k % groupNum))
+							groupAssignment.save(flush: true)
+						}
 					
 					flash.message = i + " Groups Created"
 					redirect(controller: "project", action: "show", id: params.id)
-			}
-			
-			
-						
-			
+			}	
 	}
     
 
