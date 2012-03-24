@@ -8,7 +8,7 @@ class Course {
     
     private static final MINIMUM_YEAR = 2000
     
-    static hasMany = [enrollments: Enrollment, projects: Project, surveys:Survey]
+    static hasMany = [enrollments: Enrollment, projects: Project]
     static belongsTo = [owner: User]
     
     static constraints = {

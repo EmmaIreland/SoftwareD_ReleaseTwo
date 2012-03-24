@@ -6,7 +6,7 @@ class Project {
     String description
     
     static belongsTo = [course: Course]
-    static hasMany = [teams: Team, surveys:Survey]
+    static hasMany = [teams: Team]
 
     static constraints = {
         name blank: false
