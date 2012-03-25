@@ -5,7 +5,7 @@ class Survey {
 	String description
 	Date dueDate
 
-	static hasMany = [studentAssignments: SurveyAssignment]
+	static hasMany = [studentAssignments: SurveyAssignment, questions: Question]
 	static belongsTo = [owner:User]
 
 	static constraints = {

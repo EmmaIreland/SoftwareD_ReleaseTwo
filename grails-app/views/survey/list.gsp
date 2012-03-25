@@ -25,15 +25,13 @@
                             <g:sortableColumn property="id" title="${message(code: 'survey.id.label', default: 'Id')}" />
                         
                             <g:sortableColumn property="name" title="${message(code: 'survey.name.label', default: 'Name')}" />
+                            
+                            <g:sortableColumn property="owner" title="${message(code: 'survey.owner.label', default: 'Owner')}" /> 
                         
                             <g:sortableColumn property="description" title="${message(code: 'survey.description.label', default: 'Description')}" />
                         
                             <g:sortableColumn property="dueDate" title="${message(code: 'survey.dueDate.label', default: 'Due Date')}" />
-                        
-                            <th><g:message code="survey.course.label" default="Course" /></th>
-                        
-                            <th><g:message code="survey.project.label" default="Project" /></th>
-                        
+                                               
                         </tr>
                     </thead>
                     <tbody>
@@ -43,14 +41,14 @@
                             <td><g:link action="show" id="${surveyInstance.id}">${fieldValue(bean: surveyInstance, field: "id")}</g:link></td>
                         
                             <td>${fieldValue(bean: surveyInstance, field: "name")}</td>
+                            
+                            <td>${fieldValue(bean: surveyInstance, field: "owner")}</td>
                         
                             <td>${fieldValue(bean: surveyInstance, field: "description")}</td>
                         
                             <td><g:formatDate date="${surveyInstance.dueDate}" /></td>
                         
-                            <td>${fieldValue(bean: surveyInstance, field: "course")}</td>
-                        
-                            <td>${fieldValue(bean: surveyInstance, field: "project")}</td>
+                        	    
                         
                         </tr>
                     </g:each>

@@ -37,6 +37,15 @@
                                 </td>
                             </tr>
                         
+                             <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="owner"><g:message code="course.owner.label" default="Owner" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'owner', 'errors')}">
+                                    <g:select name="owner.id" from="${surveyor.User.list()}" optionKey="id" value="${surveyInstance?.owner?.id}"  />
+                                </td>
+                            </tr>
+                        
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="description"><g:message code="survey.description.label" default="Description" /></label>
@@ -55,32 +64,6 @@
                                 </td>
                             </tr>
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="course"><g:message code="survey.course.label" default="Course" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'course', 'errors')}">
-                                    <g:select name="course.id" from="${surveyor.Course.list()}" optionKey="id" value="${surveyInstance?.course?.id}" noSelection="['null': '']" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="project"><g:message code="survey.project.label" default="Project" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'project', 'errors')}">
-                                    <g:select name="project.id" from="${surveyor.Project.list()}" optionKey="id" value="${surveyInstance?.project?.id}" noSelection="['null': '']" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="team"><g:message code="survey.team.label" default="Team" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'team', 'errors')}">
-                                    <g:select name="team.id" from="${surveyor.Team.list()}" optionKey="id" value="${surveyInstance?.team?.id}" noSelection="['null': '']" />
-                                </td>
-                            </tr>
                         
                         </tbody>
                     </table>
