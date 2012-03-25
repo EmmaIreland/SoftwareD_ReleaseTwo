@@ -11,7 +11,6 @@
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
             <span class="menuButton"><g:link class="list" action="list"><g:message code="Group List" args="[entityName]" /></g:link></span>
-            <span class="menuButton"><g:link class="create" action="create"><g:message code="New Group" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="Group Details" args="[entityName]" /></h1>
