@@ -22,7 +22,7 @@ class TeamController {
         
         def createAndSaveMany = {
                 if (!isInteger(params.groupNumber)){
-                        flash.message = "Please enter a positive integer"							
+                        flash.message = 'Please enter a positive integer'							
                         redirect(action:"create", params:[projectId:params.id])              
 				} else {
                         def groupNum = params.groupNumber.toInteger()
@@ -32,7 +32,7 @@ class TeamController {
                                 projectInstance.save(flush: true)
                         }
 						
-                        flash.message = i + " Groups Created"
+                        flash.message = i + ' Groups Created'
                         redirect(controller: "project", action: "show", id: params.id)
                 }
         }
@@ -51,7 +51,7 @@ class TeamController {
 			teamsInstance.properties = params
 			
 			if(!isInteger(params.groupNumber)) {
-					flash.message = "Please enter a positive integer"
+					flash.message = 'Please enter a positive integer'
 					redirect(action:"create", params:[projectId:params.id])
 			}
 			else{
@@ -75,7 +75,7 @@ class TeamController {
 						def groupAssignment = new GroupAssignment(student:studentList.get(k), team:groupList.get(k % groupNum))
 						groupAssignment.save(flush: true)
 					}
-					flash.message = i + " Groups Created"
+					flash.message = i + ' Groups Created'
 					redirect(controller: "project", action: "show", id: params.id)
 			}	
 	}

@@ -12,6 +12,6 @@ class Enrollment {
     }
     
     String toString() {
-        student.name + " in " + course.abbreviation
+        student.name + ' in ' + course.abbreviation
     }
 }
