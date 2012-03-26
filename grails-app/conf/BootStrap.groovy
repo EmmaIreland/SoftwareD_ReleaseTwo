@@ -34,19 +34,20 @@ class BootStrap {
             new Enrollment(course: softwareDesign, student: phou).save(failOnError:true)
             new Enrollment(course: softwareDesign, student: chris).save(failOnError:true)
             new Enrollment(course: softwareDesign, student: josh).save(failOnError:true)
-            
             new Enrollment(course: softwareDesign, student: matthew).save(failOnError:true)
             new Enrollment(course: softwareDesign, student: emma).save(failOnError:true)
             new Enrollment(course: softwareDesign, student: christopher).save(failOnError:true)
             new Enrollment(course: softwareDesign, student: ian).save(failOnError:true)
-            
             new Enrollment(course: softwareDesign, student: matt).save(failOnError:true)
-            new Enrollment(course: musicTheory, student: phou).save(failOnError:true)
+			
+			new Enrollment(course: musicTheory, student: phou).save(failOnError:true)
             new Enrollment(course: musicTheory, student: bill).save(failOnError:true)
             new Enrollment(course: musicTheory, student: matt).save(failOnError:true)
             new Enrollment(course: musicTheory, student: albert).save(failOnError:true)
-            new Enrollment(course: beginningFrench, student: chris).save(failOnError:true)
+            
+			new Enrollment(course: beginningFrench, student: chris).save(failOnError:true)
             new Enrollment(course: beginningFrench, student: annabel).save(failOnError:true)
+			new Enrollment(course: beginningFrench, student: steve).save(failOnError:true)
             
             Project ninthSymphony = new Project(name: 'The 9th Symphony', description: 'Analyze this composition and memorize the score.', course: musicTheory).save(failOnError:true)
             Project imparfait = new Project(name: 'The Imparfait', description: 'Vous apprenderez l\'imparfait', course: beginningFrench).save(failOnError:true)
