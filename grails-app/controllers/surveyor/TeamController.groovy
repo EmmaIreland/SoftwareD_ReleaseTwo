@@ -63,9 +63,9 @@ class TeamController {
 						studentList = studentList - currentStudents[i]
 					}
 								
-					def i
+					
 					List groupList = []
-					for (i = 0; i < groupNum; i++) {
+					for (def i = 0; i < groupNum; i++) {
 						def currentTeam = new Team(name:"Group ${i}", project: Project.findById(params.id))	
 							currentTeam.save(flush: true)
 						groupList.add(currentTeam)
