@@ -13,16 +13,13 @@
 	<div class="nav">
 		<span class="menuButton"><a class="home"
 			href="${createLink(uri: '/')}"><g:message
-					code="default.home.label" />
-		</a>
-		</span> <span class="menuButton"><g:link class="list" action="list">
+					code="default.home.label" /> </a> </span> <span class="menuButton"><g:link
+				class="list" action="list">
 				<g:message code="default.list.label" args="[entityName]" />
-			</g:link>
-		</span> <span class="menuButton"><g:link class="create"
+			</g:link> </span> <span class="menuButton"><g:link class="create"
 				action="create">
 				<g:message code="default.new.label" args="[entityName]" />
-			</g:link>
-		</span>
+			</g:link> </span>
 	</div>
 	<div class="body">
 		<h1>
@@ -39,8 +36,7 @@
 
 					<tr class="prop">
 						<td valign="top" class="name"><g:message
-								code="project.name.label" default="Name" />
-						</td>
+								code="project.name.label" default="Name" /></td>
 
 						<td valign="top" class="value">
 							${fieldValue(bean: projectInstance, field: "name")}
@@ -50,8 +46,7 @@
 
 					<tr class="prop">
 						<td valign="top" class="name"><g:message
-								code="project.description.label" default="Description" />
-						</td>
+								code="project.description.label" default="Description" /></td>
 
 						<td valign="top" class="value">
 							${fieldValue(bean: projectInstance, field: "description")}
@@ -61,14 +56,12 @@
 
 					<tr class="prop">
 						<td valign="top" class="name"><g:message
-								code="project.course.label" default="Course" />
-						</td>
+								code="project.course.label" default="Course" /></td>
 
 						<td valign="top" class="value"><g:link controller="course"
 								action="show" id="${projectInstance?.course?.id}">
 								${projectInstance?.course?.encodeAsHTML()}
-							</g:link>
-						</td>
+							</g:link></td>
 
 					</tr>
 
@@ -101,12 +94,10 @@
 							title="${message(code: 'project.team.label', default: 'Groups')}" />
 
 						<th><g:message code="project.course.label"
-								default="Students in Group" />
-						</th>
+								default="Students in Group" /></th>
 
 						<th><g:message code="project.course.label"
-								default="Description" />
-						</th>
+								default="Description" /></th>
 
 
 					</tr>
@@ -117,7 +108,8 @@
 
 							<td><g:link controller="team" action="show" id="${k.id}">
 									${k?.encodeAsHTML()}
-								</g:link></td>
+								</g:link>
+							</td>
 
 							<td valign="top" style="text-align: left;" class="value">
 								<ul>
@@ -125,10 +117,10 @@
 
 										<li><g:link controller="user" action="show" id="${s.id}">
 												${s?.encodeAsHTML()}
-											</g:link>
-										</li>
+											</g:link></li>
 									</g:each>
-								</ul></td>
+								</ul>
+							</td>
 							<td valign="top" class="value">
 								${fieldValue(bean: projectInstance, field: "description")}
 							</td>
@@ -137,7 +129,11 @@
 					</g:each>
 				</tbody>
 			</table>
-		
+			<div class="buttons">						
+				<span class="menuButton"><g:link class="create" controller="team" action="create" params="['projectId': projectInstance?.id]"><g:message code="Add Groups" args="[entityName]"/></g:link>
+				</span>
+			</div>
+
 		</div>
 
 

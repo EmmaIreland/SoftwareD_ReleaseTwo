@@ -14,7 +14,7 @@
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
-            <h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1><g:message code="Survey Details" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -22,12 +22,6 @@
                 <table>
                     <tbody>
                     
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="survey.id.label" default="Id" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: surveyInstance, field: "id")}</td>
-                            
-                        </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="survey.name.label" default="Name" /></td>
@@ -56,7 +50,7 @@
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
                                 <g:each in="${surveyInstance.studentAssignments}" var="s">
-                                    <li><g:link controller="surveyAssignment" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+                                    <li><g:link controller="user" action="show" id="${s.student.id}">${s?.student.toLastNameFirstName().encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
                             </td>

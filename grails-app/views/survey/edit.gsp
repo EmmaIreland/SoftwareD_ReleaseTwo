@@ -54,7 +54,7 @@
                                   <label for="dueDate"><g:message code="survey.dueDate.label" default="Due Date" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'dueDate', 'errors')}">
-                                    <g:datePicker name="dueDate" precision="day" value="${surveyInstance?.dueDate}" default="none" noSelection="['': '']" />
+                                    <g:datePicker name="dueDate" precision="hour" value="${surveyInstance?.dueDate}" default="none" noSelection="['': '']" years="[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]"/>
                                 </td>
                             </tr>
                         
@@ -66,7 +66,7 @@
                                     
 <ul>
 <g:each in="${surveyInstance?.studentAssignments?}" var="s">
-    <li><g:link controller="surveyAssignment" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+                                    <li><g:link controller="user" action="show" id="${s.student.id}">${s?.student.toLastNameFirstName().encodeAsHTML()}</g:link></li>
 </g:each>
 </ul>
 <g:link controller="surveyAssignment" action="create" params="['survey.id': surveyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'surveyAssignment.label', default: 'SurveyAssignment')])}</g:link>

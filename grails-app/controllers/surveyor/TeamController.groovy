@@ -56,11 +56,11 @@ class TeamController {
 			}
 			else{
 					def groupNum = params.groupNumber.toInteger()
-					
+					def i
 					List studentList = new ArrayList(new ArrayList(Project.findById(params.id).course.enrollments*.student))
 					List currentStudents = Project.findById(params.id).teams.groupAssignments*.student
-					for (int i = 0; i < currentStudents.size(); i++) {
-						studentList = studentList - currentStudents[i]
+					for (int j = 0; j < currentStudents.size(); j++) {
+						studentList = studentList - currentStudents[j]
 					}
 								
 					
@@ -75,7 +75,8 @@ class TeamController {
 						def groupAssignment = new GroupAssignment(student:studentList.get(k), team:groupList.get(k % groupNum))
 						groupAssignment.save(flush: true)
 					}
-					flash.message = i + ' Groups Created'
+					
+                                        flash.message = i + ' Groups Created'
 					redirect(controller: "project", action: "show", id: params.id)
 			}	
 	}

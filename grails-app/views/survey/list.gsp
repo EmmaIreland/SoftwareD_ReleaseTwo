@@ -21,9 +21,7 @@
                 <table>
                     <thead>
                         <tr>
-                        
-                            <g:sortableColumn property="id" title="${message(code: 'survey.id.label', default: 'Id')}" />
-                        
+                                                
                             <g:sortableColumn property="name" title="${message(code: 'survey.name.label', default: 'Name')}" />
                         
                             <g:sortableColumn property="description" title="${message(code: 'survey.description.label', default: 'Description')}" />
@@ -37,16 +35,14 @@
                     <tbody>
                     <g:each in="${surveyInstanceList}" status="i" var="surveyInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-                            <td><g:link action="show" id="${surveyInstance.id}">${fieldValue(bean: surveyInstance, field: "id")}</g:link></td>
-                        
-                            <td>${fieldValue(bean: surveyInstance, field: "name")}</td>
+                                                
+                            <td><g:link action="show" id="${surveyInstance.id}">${fieldValue(bean: surveyInstance, field: "name")}</g:link></td>
                         
                             <td>${fieldValue(bean: surveyInstance, field: "description")}</td>
                         
                             <td><g:formatDate date="${surveyInstance.dueDate}" /></td>
                         
-                            <td>${fieldValue(bean: surveyInstance, field: "owner")}</td>
+                            <td><g:link controller="user" action="show" id="${surveyInstance.id}">${fieldValue(bean: surveyInstance, field: "owner")}</g:link></td>
                         
                         </tr>
                     </g:each>

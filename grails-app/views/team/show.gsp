@@ -28,9 +28,16 @@
                             <td valign="top" class="value">${fieldValue(bean: teamInstance, field: "name")}</td>
                             
                         </tr>
+                        
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="team.comments.label" default="Comments" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: teamInstance, field: "comments")}</td>
+                            
+                        </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="team.groupAssignments.label" default="Group Assignments" /></td>
+                            <td valign="top" class="name"><g:message code="team.groupAssignments.label" default="Students in Group" /></td>
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
