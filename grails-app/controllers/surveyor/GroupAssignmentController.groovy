@@ -81,12 +81,12 @@ class GroupAssignmentController {
 
     def delete = {
         def groupAssignmentInstance = GroupAssignment.get(params.id)
-        def projectInstance = GroupAssignment.get(groupAssignmentInstance.team.project.id)
+        //def projectInstance = GroupAssignment.get(groupAssignmentInstance.team.project.id)
         if (groupAssignmentInstance) {
             try {
                 groupAssignmentInstance.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
-                redirect(controller: 'project', action: 'show', id: projectInstance.id)
+                redirect(controller: 'project', action: 'show'/*, id: projectInstance.id*/)
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
