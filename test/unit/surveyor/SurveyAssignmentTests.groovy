@@ -23,4 +23,14 @@ class SurveyAssignmentTests extends GrailsUnitTestCase {
         SurveyAssignment surveyAssignment = new SurveyAssignment(survey: survey, student: sarah)
         assertTrue surveyAssignment.validate()
     }
+    
+    void testNoDuplicateStudents() {
+        SurveyAssignment surveyAssignment = new SurveyAssignment(survey: survey, student: sarah)
+        assertTrue surveyAssignment.validate()
+        SurveyAssignment surveyAssignment2 = new SurveyAssignment(survey: survey, student: sarah)
+        mockDomain(SurveyAssignment, [surveyAssignment2, surveyAssignment])
+        assertFalse surveyAssignment.validate()
+        assertFalse surveyAssignment2.validate()
+    }
+    
 }

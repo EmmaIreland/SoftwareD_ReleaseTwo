@@ -21,18 +21,18 @@
             <div class="dialog">
                 <table>
                     <tbody>
-  
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="survey.id.label" default="Id" /></td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean: surveyInstance, field: "id")}</td>
+                            
+                        </tr>
+                    
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="survey.name.label" default="Name" /></td>
                             
                             <td valign="top" class="value">${fieldValue(bean: surveyInstance, field: "name")}</td>
-                            
-                        </tr>
-                    
-          				<tr class="prop">
-                            <td valign="top" class="name"><g:message code="survey.owner.label" default="Owner" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: surveyInstance, field: "owner")}</td>
                             
                         </tr>
                     
@@ -50,7 +50,38 @@
                             
                         </tr>
                     
-
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="survey.studentAssignments.label" default="Student Assignments" /></td>
+                            
+                            <td valign="top" style="text-align: left;" class="value">
+                                <ul>
+                                <g:each in="${surveyInstance.studentAssignments}" var="s">
+                                    <li><g:link controller="surveyAssignment" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
+                            
+                        </tr>
+                        
+                          <tr class="prop">
+                            <td valign="top" class="name"><g:message code="survey.questions.label" default="Questions" /></td>
+                            
+                            <td valign="top" style="text-align: left;" class="value">
+                                <ul>
+                                <g:each in="${surveyInstance.questions}" var="s">
+                                    <li><g:link controller="question" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="survey.owner.label" default="Owner" /></td>
+                            
+                            <td valign="top" class="value"><g:link controller="user" action="show" id="${surveyInstance?.owner?.id}">${surveyInstance?.owner?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
                     
                     </tbody>
                 </table>

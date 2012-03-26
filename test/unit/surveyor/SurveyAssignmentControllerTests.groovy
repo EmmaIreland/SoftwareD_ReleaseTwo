@@ -2,7 +2,7 @@ package surveyor
 
 import grails.test.*
 
-class AnswerTests extends GrailsUnitTestCase {
+class SurveyAssignmentControllerTests extends ControllerUnitTestCase {
     protected void setUp() {
         super.setUp()
     }

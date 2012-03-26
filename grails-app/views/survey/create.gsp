@@ -37,15 +37,6 @@
                                 </td>
                             </tr>
                         
-                             <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="owner"><g:message code="course.owner.label" default="Owner" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'owner', 'errors')}">
-                                    <g:select name="owner.id" from="${surveyor.User.list()}" optionKey="id" value="${surveyInstance?.owner?.id}"  />
-                                </td>
-                            </tr>
-                        
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="description"><g:message code="survey.description.label" default="Description" /></label>
@@ -60,10 +51,18 @@
                                     <label for="dueDate"><g:message code="survey.dueDate.label" default="Due Date" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'dueDate', 'errors')}">
-                                    <g:datePicker name="dueDate" precision="hour" value="${surveyInstance?.dueDate}" default="none" noSelection="['': '']" years="[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]"/>
+                                    <g:datePicker name="dueDate" precision="hour" value="${surveyInstance?.dueDate}" default="none" noSelection="['': '']" />
                                 </td>
                             </tr>
                         
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="owner"><g:message code="survey.owner.label" default="Owner" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'owner', 'errors')}">
+                                    <g:select name="owner.id" from="${surveyor.User.list()}" optionKey="id" value="${surveyInstance?.owner?.id}"  />
+                                </td>
+                            </tr>
                         
                         </tbody>
                     </table>

@@ -39,16 +39,7 @@
                                     <g:textField name="name" value="${surveyInstance?.name}" />
                                 </td>
                             </tr>
-                            
-                             <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="owner"><g:message code="course.owner.label" default="Owner" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'owner', 'errors')}">
-                                    <g:select name="owner.id" from="${surveyor.User.list()}" optionKey="id" value="${surveyInstance?.owner?.id}"  />
-                                </td>
-                            </tr>
-                            
+                        
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="description"><g:message code="survey.description.label" default="Description" /></label>
@@ -67,7 +58,46 @@
                                 </td>
                             </tr>
                         
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="studentAssignments"><g:message code="survey.studentAssignments.label" default="Student Assignments" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'studentAssignments', 'errors')}">
+                                    
+<ul>
+<g:each in="${surveyInstance?.studentAssignments?}" var="s">
+    <li><g:link controller="surveyAssignment" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+</g:each>
+</ul>
+<g:link controller="surveyAssignment" action="create" params="['survey.id': surveyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'surveyAssignment.label', default: 'SurveyAssignment')])}</g:link>
+
+                                </td>
+                            </tr>
                             
+                             <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="questions"><g:message code="survey.questions.label" default="Questions" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'questions', 'errors')}">
+                                    
+<ul>
+<g:each in="${surveyInstance?.questions?}" var="s">
+    <li><g:link controller="question" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+</g:each>
+</ul>
+<g:link controller="question" action="create" params="['survey.id': surveyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'question.label', default: 'Question')])}</g:link>
+
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="owner"><g:message code="survey.owner.label" default="Owner" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: surveyInstance, field: 'owner', 'errors')}">
+                                    <g:select name="owner.id" from="${surveyor.User.list()}" optionKey="id" value="${surveyInstance?.owner?.id}"  />
+                                </td>
+                            </tr>
                         
                         </tbody>
                     </table>
