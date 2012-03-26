@@ -8,27 +8,29 @@ class BootStrap {
 
     def init = { servletContext ->
         if (noData()) {
-            User nic = new User(name: 'Nic McPhee', email: 'mcphee@gmail.com').save(failOnError:true)
-            User sarah = new User(name: 'Sarah Buchanan', email: 'buchanan@gmail.com').save(failOnError:true)
-            User simon = new User(name: 'Simon Tillier', email: 'tillier@gmail.com').save(failOnError:true)
             
-            User phou = new User(name: 'Phou Lee', email: 'phoulee@gmail.com').save(failOnError:true)
-            User chris = new User(name: 'Chris Aga', email: 'chrisaga@gmail.com').save(failOnError:true)
-            User kevin = new User(name: 'Kevin Viratyosin', email: 'kevinviratyosin@gmail.com').save(failOnError:true)
-            User josh = new User(name: 'Josh Johnson', email: 'joshjohnson@gmail.com').save(failOnError:true)
-            User matthew = new User(name: 'Matthew Perrault', email: 'mattperrault@gmail.com').save(failOnError:true)
-            User emma = new User(name: 'Emma Ireland', email: 'emmaireland@gmail.com').save(failOnError:true)
-            User christopher = new User(name: 'Christopher Thomas', email: 'christhomas@gmail.com').save(failOnError:true)
-            User ian = new User(name: 'Ian McGathy', email: 'ianmcgathy@gmail.com').save(failOnError:true)
-            User steve = new User(name: 'Steve Jungst', email: 'stevejungst@gmail.com').save(failOnError:true)
-            User matt = new User(name: 'Matt Cotter', email: 'mattcotter@gmail.com').save(failOnError:true)
-            User annabel = new User(name: 'Annabel Lee', email: 'annabellee@poe.org').save(failOnError:true)
-            User bill = new User(name: 'Bill Gates', email: 'gates@microsoft.com').save(failOnError:true)
-            User albert = new User(name: 'Albert Einstein', email: 'einstein@gmail.com').save(failOnError:true)
+			User[] students = [
+			User nic = new User(name: 'Nic McPhee', email: 'mcphee@gmail.com'),
+            User sarah = new User(name: 'Sarah Buchanan', email: 'buchanan@gmail.com'),
+            User simon = new User(name: 'Simon Tillier', email: 'tillier@gmail.com'),
+            User phou = new User(name: 'Phou Lee', email: 'phoulee@gmail.com'),
+            User chris = new User(name: 'Chris Aga', email: 'chrisaga@gmail.com'),
+            User kevin = new User(name: 'Kevin Viratyosin', email: 'kevinviratyosin@gmail.com'),
+            User josh = new User(name: 'Josh Johnson', email: 'joshjohnson@gmail.com'),
+            User matthew = new User(name: 'Matthew Perrault', email: 'mattperrault@gmail.com'),
+            User emma = new User(name: 'Emma Ireland', email: 'emmaireland@gmail.com'),
+            User christopher = new User(name: 'Christopher Thomas', email: 'christhomas@gmail.com'),
+            User ian = new User(name: 'Ian McGathy', email: 'ianmcgathy@gmail.com'),
+            User steve = new User(name: 'Steve Jungst', email: 'stevejungst@gmail.com'),
+            User matt = new User(name: 'Matt Cotter', email: 'mattcotter@gmail.com'),
+            User annabel = new User(name: 'Annabel Lee', email: 'annabellee@poe.org'),
+            User bill = new User(name: 'Bill Gates', email: 'gates@microsoft.com'),
+            User albert = new User(name: 'Albert Einstein', email: 'einstein@gmail.com')]
             
+			
             Course softwareDesign = new Course(abbreviation:'CSCI 3601', name:'Software Design', term:'Spring',year:'2012', owner: nic).save(failOnError:true)
-            Course musicTheory = new Course(abbreviation:'MUS 1001', name:'Music Theory', term:'Spring',year:'2012', owner: simon).save(failOnError:true)
-            Course beginningFrench = new Course(abbreviation:'FREN 1001', name:'Beginning French 1', term:'Spring',year:'2012', owner: sarah).save(failOnError:true)
+            Course musicTheory = new Course(abbreviation:'MUS 1001', name:'Music Theory', term:'Fall',year:'2013', owner: simon).save(failOnError:true)
+            Course frenchI = new Course(abbreviation:'FREN 1001', name:'French I', term:'May',year:'2014', owner: sarah).save(failOnError:true)
 
             new Enrollment(course: softwareDesign, student: kevin).save(failOnError:true)
             new Enrollment(course: softwareDesign, student: phou).save(failOnError:true)
@@ -45,12 +47,12 @@ class BootStrap {
             new Enrollment(course: musicTheory, student: matt).save(failOnError:true)
             new Enrollment(course: musicTheory, student: albert).save(failOnError:true)
             
-			new Enrollment(course: beginningFrench, student: chris).save(failOnError:true)
-            new Enrollment(course: beginningFrench, student: annabel).save(failOnError:true)
-			new Enrollment(course: beginningFrench, student: steve).save(failOnError:true)
+			new Enrollment(course: frenchI, student: chris).save(failOnError:true)
+            new Enrollment(course: frenchI, student: annabel).save(failOnError:true)
+			new Enrollment(course: frenchI, student: steve).save(failOnError:true)
             
             Project ninthSymphony = new Project(name: 'The 9th Symphony', description: 'Analyze this composition and memorize the score.', course: musicTheory).save(failOnError:true)
-            Project imparfait = new Project(name: 'The Imparfait', description: 'Vous apprenderez l\'imparfait', course: beginningFrench).save(failOnError:true)
+            Project imparfait = new Project(name: 'The Imparfait', description: 'Vous apprenderez l\'imparfait', course: frenchI).save(failOnError:true)
             Project releaseOne = new Project(name: 'Release One', description: '', course: softwareDesign).save(failOnError:true)
             
             Team camelCase = new Team(name: 'CamelCaseShotgunners', project: releaseOne).save(failOnError:true)
