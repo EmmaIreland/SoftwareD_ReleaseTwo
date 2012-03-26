@@ -32,7 +32,7 @@ class TeamController {
                                 projectInstance.save(flush: true)
                         }
 						
-                        flash.message = i + ' Groups Created'
+                        flash.message = i + 'Empty Groups Created'
                         redirect(controller: "project", action: "show", id: params.id)
                 }
         }
