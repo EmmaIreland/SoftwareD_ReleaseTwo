@@ -31,51 +31,69 @@ class BootStrap {
 				students[i].save(failOnError:true)
 			}
 			
-            Course softwareDesign = new Course(abbreviation:'CSCI 3601', name:'Software Design', term:'Spring',year:'2012', owner: nic).save(failOnError:true)
-            Course musicTheory = new Course(abbreviation:'MUS 1001', name:'Music Theory', term:'Fall',year:'2013', owner: simon).save(failOnError:true)
-            Course frenchI = new Course(abbreviation:'FREN 1001', name:'French I', term:'May',year:'2014', owner: sarah).save(failOnError:true)
-			
+            Course softwareDesign = new Course(abbreviation:'CSCI 3601', name:'Software Design', term:'Spring',year:'2012', owner: nic)
+            Course musicTheory = new Course(abbreviation:'MUS 1001', name:'Music Theory', term:'Fall',year:'2013', owner: simon)
+            Course frenchI = new Course(abbreviation:'FREN 1001', name:'French I', term:'May',year:'2014', owner: sarah)
+			Course[] courses = [softwareDesign, musicTheory, frenchI]
+			for(int i = 0; i < courses.length; i++){
+				courses[i].save(failOnError:true)
+			}
 			
 
-            new Enrollment(course: softwareDesign, student: kevin).save(failOnError:true)
-            new Enrollment(course: softwareDesign, student: phou).save(failOnError:true)
-            new Enrollment(course: softwareDesign, student: chris).save(failOnError:true)
-            new Enrollment(course: softwareDesign, student: josh).save(failOnError:true)
-            new Enrollment(course: softwareDesign, student: matthew).save(failOnError:true)
-            new Enrollment(course: softwareDesign, student: emma).save(failOnError:true)
-            new Enrollment(course: softwareDesign, student: christopher).save(failOnError:true)
-            new Enrollment(course: softwareDesign, student: ian).save(failOnError:true)
-            new Enrollment(course: softwareDesign, student: matt).save(failOnError:true)
+            Enrollment kevinInSoftwareDesign = new Enrollment(course: softwareDesign, student: kevin)
+	            Enrollment phouInSoftwareDesign = new Enrollment(course: softwareDesign, student: phou)
+	            Enrollment chrisInSoftwareDesign = new Enrollment(course: softwareDesign, student: chris)
+	            Enrollment joshInSoftwareDesign = new Enrollment(course: softwareDesign, student: josh)
+           
+	            Enrollment matthewInSoftwareDesign = new Enrollment(course: softwareDesign, student: matthew)
+	            Enrollment emmaInSoftwareDesign = new Enrollment(course: softwareDesign, student: emma)
+	            Enrollment christopherInSoftwareDesign = new Enrollment(course: softwareDesign, student: christopher)
+	            Enrollment ianInSoftwareDesign = new Enrollment(course: softwareDesign, student: ian)
+	           
+	            Enrollment mattInSoftwareDesign = new Enrollment(course: softwareDesign, student: matt)
+	            Enrollment phouInMusicTheory = new Enrollment(course: musicTheory, student: phou)
+	            Enrollment billInMusicTheory = new Enrollment(course: musicTheory, student: bill)
+	            Enrollment mattInMusicTheory = new Enrollment(course: musicTheory, student: matt)
+	            Enrollment albertInMusicTheory = new Enrollment(course: musicTheory, student: albert)
+	            Enrollment chrisInBeginningFrench = new Enrollment(course: frenchI, student: chris)
+	            Enrollment annabelInBeginningFrench = new Enrollment(course: frenchI, student: annabel)
 			
-			new Enrollment(course: musicTheory, student: phou).save(failOnError:true)
-            new Enrollment(course: musicTheory, student: bill).save(failOnError:true)
-            new Enrollment(course: musicTheory, student: matt).save(failOnError:true)
-            new Enrollment(course: musicTheory, student: albert).save(failOnError:true)
+			Enrollment[] enrollments = [kevinInSoftwareDesign, phouInSoftwareDesign, chrisInSoftwareDesign,joshInSoftwareDesign, matthewInSoftwareDesign, emmaInSoftwareDesign, christopherInSoftwareDesign, ianInSoftwareDesign, mattInSoftwareDesign, phouInMusicTheory, billInMusicTheory, mattInMusicTheory, albertInMusicTheory, chrisInBeginningFrench, annabelInBeginningFrench]
+			for(int i = 0; i < enrollments.length; i++){
+				enrollments[i].save(failOnError:true)
+			}
             
-			new Enrollment(course: frenchI, student: chris).save(failOnError:true)
-            new Enrollment(course: frenchI, student: annabel).save(failOnError:true)
-			new Enrollment(course: frenchI, student: steve).save(failOnError:true)
+            Project ninthSymphony = new Project(name: 'The 9th Symphony', description: 'Analyze this composition and memorize the score.', course: musicTheory)
+            Project imparfait = new Project(name: 'The Imparfait', description: 'Vous apprenderez l\'imparfait', course: frenchI)
+            Project releaseOne = new Project(name: 'Release One', description: '', course: softwareDesign)
+            Project[] project = [ninthSymphony, imparfait, releaseOne]
+			for(int i = 0; i < project.length; i++){
+				project[i].save(failOnError:true)
+			}
+			
+            Team camelCase = new Team(name: 'CamelCaseShotgunners', project: releaseOne)
+            Team amish = new Team(name: 'TeamAmish', project: releaseOne)
+            Team prodigies = new Team(name: 'Child Prodigies', project: ninthSymphony)
+			Team frenchies = new Team(name: 'We Like France', project: imparfait)
+			Team[] team = [camelCase, amish, prodigies, frenchies]
+			for(int i = 0; i < team.length; i++){
+				team[i].save(failOnError:true)
+			}
             
-            Project ninthSymphony = new Project(name: 'The 9th Symphony', description: 'Analyze this composition and memorize the score.', course: musicTheory).save(failOnError:true)
-            Project imparfait = new Project(name: 'The Imparfait', description: 'Vous apprenderez l\'imparfait', course: frenchI).save(failOnError:true)
-            Project releaseOne = new Project(name: 'Release One', description: '', course: softwareDesign).save(failOnError:true)
-            
-            Team camelCase = new Team(name: 'CamelCaseShotgunners', project: releaseOne).save(failOnError:true)
-            Team amish = new Team(name: 'TeamAmish', project: releaseOne).save(failOnError:true)
-            Team prodigies = new Team(name: 'Child Prodigies', project: ninthSymphony).save(failOnError:true)
-			Team frenchies = new Team(name: 'We Like France', project: imparfait).save(failOnError:true)
-            
-            new GroupAssignment(student: annabel, team: frenchies).save(failOnError:true)
-			new GroupAssignment(student: chris, team: camelCase).save(failOnError:true)
-            new GroupAssignment(student: kevin, team: camelCase).save(failOnError:true)
-            new GroupAssignment(student: phou, team: camelCase).save(failOnError:true)
-            new GroupAssignment(student: josh, team: camelCase).save(failOnError:true)
-            new GroupAssignment(student: matthew, team: amish).save(failOnError:true)
-            new GroupAssignment(student: emma, team: amish).save(failOnError:true)
-            new GroupAssignment(student: christopher, team: amish).save(failOnError:true)
-            new GroupAssignment(student: ian, team: amish).save(failOnError:true)
-            new GroupAssignment(student: albert, team: prodigies).save(failOnError:true)
-            new GroupAssignment(student: bill, team: prodigies).save(failOnError:true)
+            GroupAssignment chrisToCamelCase = new GroupAssignment(student: chris, team: camelCase)
+	            GroupAssignment kevinToCamelCase = new GroupAssignment(student: kevin, team: camelCase)
+	            GroupAssignment phouToCamelCase = new GroupAssignment(student: phou, team: camelCase)
+	            GroupAssignment joshToCamelCase = new GroupAssignment(student: josh, team: camelCase)
+	            GroupAssignment matthewToAmish = new GroupAssignment(student: matthew, team: amish)
+	            GroupAssignment emmaToAmish = new GroupAssignment(student: emma, team: amish)
+	            GroupAssignment christopherToAmish = new GroupAssignment(student: christopher, team: amish)
+	            GroupAssignment ianToAmish = new GroupAssignment(student: ian, team: amish)
+	            GroupAssignment albertToProdigies = new GroupAssignment(student: albert, team: prodigies)
+	            GroupAssignment billToProdigies = new GroupAssignment(student: bill, team: prodigies)
+				GroupAssignment[] groupAssignment = [kevinToCamelCase, chrisToCamelCase, phouToCamelCase, joshToCamelCase, matthewToAmish, emmaToAmish,christopherToAmish,ianToAmish,albertToProdigies,billToProdigies]
+				for(int i = 0; i < groupAssignment.length; i++){
+					groupAssignment[i].save(failOnError:true)
+				}
         }
     }
 
