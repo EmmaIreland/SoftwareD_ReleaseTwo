@@ -2,11 +2,11 @@ package surveyor
 
 class CourseController {
 
-	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	static allowedMethods = [save: 'POST', update: 'POST', delete: 'POST']
 
 	def index = {
-		redirect(action: "list", params: params)
-	} 
+		redirect(action: 'list', params: params)
+	}
 
 	def list = {
 		params.max = Math.min(params.max ? params.int('max') : 10, 100)
@@ -22,19 +22,19 @@ class CourseController {
 	def save = {
 		def courseInstance = new Course(params)
 		if (courseInstance.save(flush: true)) {
-			flash.message = "${message(code: 'default.created.message', args: [message(code: 'course.label', default: 'Course'), courseInstance.toString()])}"
-			redirect(action: "show", id: courseInstance.id)
+				flash.message = makeMessage('default.created.message', courseInstance.toString())
+			redirect(action: 'show', id: courseInstance.id)
 		}
 		else {
-			render(view: "create", model: [courseInstance: courseInstance])
+			render(view: 'create', model: [courseInstance: courseInstance])
 		}
 	}
 
 	def show = {
 		def courseInstance = Course.get(params.id)
 		if (!courseInstance) {
-			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'course.label', default: 'Course'), params.id])}"
-			redirect(action: "list")
+			flash.message = makeMessage('default.not.found.message', params.id)
+			redirect(action: 'list')
 		}
 		else {
 			[courseInstance: courseInstance, sortedEnrollments: courseInstance.sortedEnrollments]
@@ -44,12 +44,12 @@ class CourseController {
 	def edit = {
 		def courseInstance = Course.get(params.id)
 		if (!courseInstance) {
-			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'course.label', default: 'Course'), params.id])}"
-			redirect(action: "list")
+			flash.message = makeMessage('default.not.found.message', params.id)
+			redirect(action: 'list')
 		}
 		else {
 			List allUsers = new ArrayList(User.list())
-			List allUsersExceptOwner = new ArrayList()
+			List allUsersExceptOwner = []
 
 
 			allUsers = allUsers - courseInstance.enrollments*.student
@@ -60,7 +60,9 @@ class CourseController {
 				}
 			}
 
-			allUsersExceptOwner.sort{it.toLastNameFirstName()}
+			allUsersExceptOwner.sort{
+				it.toLastNameFirstName()
+			}
 
 			[courseInstance: courseInstance, sortedEnrollments: courseInstance.sortedEnrollments, availableStudents: allUsersExceptOwner, hasAvailableStudents: (allUsers.size() > 0), User: User]
 		}
@@ -73,16 +75,15 @@ class CourseController {
 				def version = params.version.toLong()
 				if (courseInstance.version > version) {
 
-					courseInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [
+					courseInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [
 						message(code: 'course.label', default: 'Course')]
-					as Object[], "Another user has updated this Course while you were editing")
-					render(view: "edit", model: [courseInstance: courseInstance])
+					as Object[], 'Another user has updated this Course while you were editing')
+					render(view: 'edit', model: [courseInstance: courseInstance])
 					return
 				}
 			}
 			courseInstance.properties = params
 
-			// do new Enrollments
 			def studentIds = params.list('studentIds')
 
 			List students = []
@@ -105,27 +106,27 @@ class CourseController {
 			if (!enrollmentErrorIds.isEmpty()) {
 				courseInstance.errors.reject('course.newenrollments.failed')
 			}
-			// end do new Enrollments
 
+			
 			if (!courseInstance.hasErrors() && enrollmentErrorIds.isEmpty() && courseInstance.save(flush: true)) {
 				enrollmentsToBeChecked.each { enrollment ->
 					enrollment.save(failOnError: true)
 				}
 
-				flash.message = "${message(code: 'default.updated.message', args: [message(code: 'course.label', default: 'Course'), courseInstance.toString()])}"
-				redirect(action: "show", id: courseInstance.id)
+				flash.message = makeMessage('default.updated.message', courseInstance.toString())
+				redirect(action: 'show', id: courseInstance.id)
 			}
 			else {
-				render(view: "edit", model: [courseInstance: courseInstance,
-							sortedEnrollments: courseInstance.sortedEnrollments,
-							newStudents: studentIds,
-							enrollmentErrorIds: enrollmentErrorIds,
-							User: User])
+				render(view: 'edit', model: [courseInstance: courseInstance,
+					sortedEnrollments: courseInstance.sortedEnrollments,
+					newStudents: studentIds,
+					enrollmentErrorIds: enrollmentErrorIds,
+					User: User])
 			}
 		}
 		else {
-			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'course.label', default: 'Course'), params.id])}"
-			redirect(action: "list")
+			flash.message = makeMessage('default.not.found.message', params.id)
+			redirect(action: 'list')
 		}
 	}
 
@@ -134,17 +135,26 @@ class CourseController {
 		if (courseInstance) {
 			try {
 				courseInstance.delete(flush: true)
-				flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'course.label', default: 'Course'), courseInstance.toString()])}"
-				redirect(action: "list")
+				flash.message = makeMessage('default.deleted.message', courseInstance.toString())
+				redirect(action: 'list')
 			}
 			catch (org.springframework.dao.DataIntegrityViolationException e) {
-				flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'course.label', default: 'Course'), courseInstance.toString()])}"
-				redirect(action: "show", id: params.id)
+				flash.message = makeMessage('default.not.deleted.message', courseInstance.toString())
+				redirect(action: 'show', id: params.id)
 			}
 		}
 		else {
-			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'course.label', default: 'Course'), params.id])}"
-			redirect(action: "list")
+			flash.message = makeMessage('default.not.found.message', params.id)
+			redirect(action: 'list')
 		}
+	}
+
+	
+	private makeMessage(code, courseId) {
+		return "${message(code: code, args: [courseLabel(), courseId])}"
+	}
+ 
+	private courseLabel() {
+		message(code: 'course.label', default: 'Course')
 	}
 }

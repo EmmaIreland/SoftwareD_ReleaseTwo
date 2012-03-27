@@ -22,7 +22,7 @@ class GroupAssignmentController {
     def save = {
         def groupAssignmentInstance = new GroupAssignment(params)
         if (groupAssignmentInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), groupAssignmentInstance.id])}"
+            flash.message = makeMessage('default.created.message', groupAssignmentInstance.id)
             redirect(action: 'show', id: groupAssignmentInstance.id)
         }
         else {
@@ -33,7 +33,7 @@ class GroupAssignmentController {
     def show = {
         def groupAssignmentInstance = GroupAssignment.get(params.id)
         if (!groupAssignmentInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
         else {
@@ -44,7 +44,7 @@ class GroupAssignmentController {
     def edit = {
         def groupAssignmentInstance = GroupAssignment.get(params.id)
         if (!groupAssignmentInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
         else {
@@ -67,7 +67,7 @@ class GroupAssignmentController {
             }
             groupAssignmentInstance.properties = params
             if (!groupAssignmentInstance.hasErrors() && groupAssignmentInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), groupAssignmentInstance.id])}"
+            flash.message = makeMessage('default.updated.message', groupAssignmentInstance.id)
                 redirect(controller: 'project', action: 'show', id: projectInstance.id)
             }
             else {
@@ -75,7 +75,7 @@ class GroupAssignmentController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
     }
@@ -86,17 +86,25 @@ class GroupAssignmentController {
         if (groupAssignmentInstance) {
             try {
                 groupAssignmentInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
+            flash.message = makeMessage('default.deleted.message', groupAssignmentInstance.id)
                 redirect(controller: 'project', action: 'show', id: projectInstance.id)
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
+				flash.message = makeMessage('default.not.deleted.message', groupAssignmentInstance.id)
                 redirect(action: 'show', id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
     }
+	
+	private makeMessage(code, groupAssignmentId) {
+		return "${message(code: code, args: [groupAssignmentLabel(), groupAssignmentId])}"
+	}
+ 
+	private groupAssignmentLabel() {
+		message(code: 'groupAssignment.label', default: 'GroupAssignment')
+	}
 }

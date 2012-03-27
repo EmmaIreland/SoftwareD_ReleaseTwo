@@ -24,8 +24,6 @@ class TeamControllerTests extends ControllerUnitTestCase {
     }
 
     void testGroupCreation() {
-		
-        
 		def controller = new TeamController()
 		controller.params.groupNumber = '2'
 		controller.params.projectInstance = releaseOne
@@ -34,9 +32,6 @@ class TeamControllerTests extends ControllerUnitTestCase {
 		
 		assertEquals "project", controller.redirectArgs.controller
 		assertEquals "show", controller.redirectArgs.action
-		
-		
-    
         
     }
 }

@@ -2,10 +2,10 @@ package surveyor
 
 class QuestionController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: 'POST', update: 'POST', delete: 'POST']
 
     def index = {
-        redirect(action: "list", params: params)
+        redirect(action: 'list', params: params)
     }
 
     def list = {
@@ -22,19 +22,19 @@ class QuestionController {
     def save = {
         def questionInstance = new Question(params)
         if (questionInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])}"
-            redirect(action: "show", id: questionInstance.id)
+            flash.message = makeMessage('default.created.message', questionInstance.id)
+            redirect(action: 'show', id: questionInstance.id)
         }
         else {
-            render(view: "create", model: [questionInstance: questionInstance])
+            render(view: 'create', model: [questionInstance: questionInstance])
         }
     }
 
     def show = {
         def questionInstance = Question.get(params.id)
         if (!questionInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'question.label', default: 'Question'), params.id])}"
-            redirect(action: "list")
+            flash.message = makeMessage('default.not.found.message', params.id)
+            redirect(action: 'list')
         }
         else {
             [questionInstance: questionInstance]
@@ -44,8 +44,8 @@ class QuestionController {
     def edit = {
         def questionInstance = Question.get(params.id)
         if (!questionInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'question.label', default: 'Question'), params.id])}"
-            redirect(action: "list")
+            flash.message = makeMessage('default.not.found.message', params.id)
+            redirect(action: 'list')
         }
         else {
             return [questionInstance: questionInstance]
@@ -59,23 +59,23 @@ class QuestionController {
                 def version = params.version.toLong()
                 if (questionInstance.version > version) {
                     
-                    questionInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'question.label', default: 'Question')] as Object[], "Another user has updated this Question while you were editing")
-                    render(view: "edit", model: [questionInstance: questionInstance])
+                    questionInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [message(code: 'question.label', default: 'Question')] as Object[], 'Another user has updated this Question while you were editing')
+                    render(view: 'edit', model: [questionInstance: questionInstance])
                     return
                 }
             }
             questionInstance.properties = params
             if (!questionInstance.hasErrors() && questionInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])}"
-                redirect(action: "show", id: questionInstance.id)
+                flash.message = makeMessage('default.updated.message', questionInstance.id)
+                redirect(action: 'show', id: questionInstance.id)
             }
             else {
-                render(view: "edit", model: [questionInstance: questionInstance])
+                render(view: 'edit', model: [questionInstance: questionInstance])
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'question.label', default: 'Question'), params.id])}"
-            redirect(action: "list")
+            flash.message = makeMessage('default.not.found.message', params.id)
+            redirect(action: 'list')
         }
     }
 
@@ -84,17 +84,24 @@ class QuestionController {
         if (questionInstance) {
             try {
                 questionInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'question.label', default: 'Question'), params.id])}"
-                redirect(action: "list")
+                flash.message = makeMessage('default.deleted.message', questionInstance.question)
+                redirect(action: 'list')
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'question.label', default: 'Question'), params.id])}"
-                redirect(action: "show", id: params.id)
+                flash.message = makeMessage('default.not.deleted.message', params.id)
+                redirect(action: 'show', id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'question.label', default: 'Question'), params.id])}"
-            redirect(action: "list")
+            flash.message = makeMessage('default.not.found.message', params.id)
+            redirect(action: 'list')
         }
     }
+	private makeMessage(code, questionId) {
+		return "${message(code: code, args: [questionLabel(), questionId])}"
+	}
+ 
+	private questionLabel() {
+		message(code: 'question.label', default: 'question')
+	}
 }

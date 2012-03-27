@@ -22,7 +22,7 @@ class UserController {
     def save = {
         def userInstance = new User(params)
         if (userInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.name])}"
+            flash.message = makeMessage('default.created.message', userInstance.name)
             redirect(action: 'show', id: userInstance.id)
         }
         else {
@@ -33,7 +33,7 @@ class UserController {
     def show = {
         def userInstance = User.get(params.id)
         if (!userInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
         else {
@@ -44,7 +44,7 @@ class UserController {
     def edit = {
         def userInstance = User.get(params.id)
         if (!userInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
         else {
@@ -58,7 +58,7 @@ class UserController {
             if (params.version) {
                 def version = params.version.toLong()
                 if (userInstance.version > version) {
-                    
+					params.id
                     userInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [message(code: 'user.label', default: 'User')] as Object[], 'Another user has updated this User while you were editing')
                     render(view: 'edit', model: [userInstance: userInstance])
                     return
@@ -66,7 +66,7 @@ class UserController {
             }
             userInstance.properties = params
             if (!userInstance.hasErrors() && userInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.name])}"
+                flash.message = makeMessage('default.updated.message', userInstance.name)
                 redirect(action: 'show', id: userInstance.id)
             }
             else {
@@ -74,7 +74,7 @@ class UserController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
     }
@@ -84,17 +84,24 @@ class UserController {
         if (userInstance) {
             try {
                 userInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'user.label', default: 'User'), userInstance.name])}"
+                flash.message = makeMessage('default.deleted.message', userInstance.name)
                 redirect(action: 'list')
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'user.label', default: 'User'), userInstance.name])}"
+                flash.message = makeMessage('default.not.deleted.message', userInstance.name)
                 redirect(action: 'show', id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
     }
+	private makeMessage(code, userId) {
+		return "${message(code: code, args: [userLabel(), userId])}"
+	}
+ 
+	private userLabel() {
+		message(code: 'user.label', default: 'User')
+	}
 }

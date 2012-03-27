@@ -22,7 +22,7 @@ class SurveyController {
     def save = {
         def surveyInstance = new Survey(params)
         if (surveyInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'survey.label', default: 'Survey'), surveyInstance.id])}"
+            flash.message = makeMessage('default.created.message', surveyInstance.name)
             redirect(action: 'show', id: surveyInstance.id)
         }
         else {
@@ -33,7 +33,7 @@ class SurveyController {
     def show = {
         def surveyInstance = Survey.get(params.id)
         if (!surveyInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'survey.label', default: 'Survey'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
         else {
@@ -44,7 +44,7 @@ class SurveyController {
     def edit = {
         def surveyInstance = Survey.get(params.id)
         if (!surveyInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'survey.label', default: 'Survey'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
         else {
@@ -66,7 +66,7 @@ class SurveyController {
             }
             surveyInstance.properties = params
             if (!surveyInstance.hasErrors() && surveyInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'survey.label', default: 'Survey'), surveyInstance.id])}"
+                flash.message = makeMessage('default.updated.message', surveyInstance.name)
                 redirect(action: 'show', id: surveyInstance.id)
             }
             else {
@@ -74,7 +74,7 @@ class SurveyController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'survey.label', default: 'Survey'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
     }
@@ -84,17 +84,24 @@ class SurveyController {
         if (surveyInstance) {
             try {
                 surveyInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'survey.label', default: 'Survey'), params.id])}"
+                flash.message = makeMessage('default.deleted.message', surveyInstance.name)
                 redirect(action: 'list')
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'survey.label', default: 'Survey'), params.id])}"
+                flash.message = makeMessage('default.not.deleted.message', params.id)
                 redirect(action: 'show', id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'survey.label', default: 'Survey'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
     }
+	private makeMessage(code, surveyId) {
+		return "${message(code: code, args: [surveyLabel(), surveyId])}"
+	}
+ 
+	private surveyLabel() {
+		message(code: 'survey.label', default: 'Survey')
+	}
 }
