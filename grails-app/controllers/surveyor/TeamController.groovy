@@ -33,11 +33,11 @@ class TeamController {
                         }
 						
                         flash.message = i + 'Empty Groups Created'
-                        redirect(controller: "project", action: "show", id: params.id)
+                        redirect(controller: 'project', action: 'show', id: params.id)
                 }
         }
         
-        def isInteger(num) {
+        private isInteger(num) {
                 def bool = false
                 if(num.isNumber() && (num.toInteger()>0)){
                         bool = true
@@ -52,7 +52,7 @@ class TeamController {
 			
 			if(!isInteger(params.groupNumber)) {
 					flash.message = 'Please enter a positive integer'
-					redirect(action:"create", params:[projectId:params.id])
+					redirect(action:'create', params:[projectId:params.id])
 			}
 			else{
 					def groupNum = params.groupNumber.toInteger()
@@ -77,7 +77,7 @@ class TeamController {
 					}
 					
                                         flash.message = i + ' Groups Created'
-					redirect(controller: "project", action: "show", id: params.id)
+					redirect(controller: 'project', action: 'show', id: params.id)
 			}	
 	}
     

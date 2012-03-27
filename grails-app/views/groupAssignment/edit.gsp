@@ -42,7 +42,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="team"><g:message code="groupAssignment.team.label" default="Team" /></label>
+                                  <label for="team"><g:message code="groupAssignment.team.label" default="Group" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: groupAssignmentInstance, field: 'team', 'errors')}">
                                     <g:select name="team.id" from="${surveyor.Team.list()}" optionKey="id" value="${groupAssignmentInstance?.team?.id}"  />

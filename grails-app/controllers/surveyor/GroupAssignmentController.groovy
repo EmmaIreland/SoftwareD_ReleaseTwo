@@ -54,6 +54,7 @@ class GroupAssignmentController {
 
     def update = {
         def groupAssignmentInstance = GroupAssignment.get(params.id)
+		def projectInstance = GroupAssignment.get(groupAssignmentInstance.team.project.id)
         if (groupAssignmentInstance) {
             if (params.version) {
                 def version = params.version.toLong()
@@ -67,7 +68,7 @@ class GroupAssignmentController {
             groupAssignmentInstance.properties = params
             if (!groupAssignmentInstance.hasErrors() && groupAssignmentInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), groupAssignmentInstance.id])}"
-                redirect(action: 'show', id: groupAssignmentInstance.id)
+                redirect(controller: 'project', action: 'show', id: projectInstance.id)
             }
             else {
                 render(view: 'edit', model: [groupAssignmentInstance: groupAssignmentInstance])
@@ -81,12 +82,12 @@ class GroupAssignmentController {
 
     def delete = {
         def groupAssignmentInstance = GroupAssignment.get(params.id)
-        //def projectInstance = GroupAssignment.get(groupAssignmentInstance.team.project.id)
+        def projectInstance = GroupAssignment.get(groupAssignmentInstance.team.project.id)
         if (groupAssignmentInstance) {
             try {
                 groupAssignmentInstance.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"
-                redirect(controller: 'project', action: 'show'/*, id: projectInstance.id*/)
+                redirect(controller: 'project', action: 'show', id: projectInstance.id)
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment'), params.id])}"

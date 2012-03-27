@@ -96,8 +96,8 @@
 						<th><g:message code="project.course.label"
 								default="Students in Group" /></th>
 
-						<th><g:message code="project.course.label"
-								default="Description" /></th>
+						<th><g:message code="project.group.comments.label"
+								default="Comments" /></th>
 
 
 					</tr>
@@ -122,7 +122,7 @@
 								</ul>
 							</td>
 							<td valign="top" class="value">
-								${fieldValue(bean: projectInstance, field: "description")}
+								${fieldValue(bean: k, field: "comments")}
 							</td>
 
 						</tr>
