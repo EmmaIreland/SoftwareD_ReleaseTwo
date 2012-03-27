@@ -6,6 +6,8 @@ class Team {
     
     static belongsTo = [project: Project]
     static hasMany = [groupAssignments: GroupAssignment]
+    
+    boolean randomize = false
 
     static constraints = {
         name blank: false
