@@ -32,7 +32,7 @@ class TeamController {
                                 projectInstance.save(flush: true)
                         }
 						
-                        flash.message = i + 'Empty Groups Created'
+                        flash.message = i + ' Empty Groups Created'
                         redirect(controller: 'project', action: 'show', id: params.id)
                 }
         }
@@ -66,13 +66,15 @@ class TeamController {
 					
 					List groupList = []
 					for (i = 0; i < groupNum; i++) {
-						def currentTeam = new Team(name:"Group ${i}", project: Project.findById(params.id))	
-							currentTeam.save(flush: true)
+						def currentTeam = new Team(name:"Group ${i}", project: Project.findById(params.id))
+                                                currentTeam.randomize = true
+						currentTeam.save(flush: true)
 						groupList.add(currentTeam)
 					}
 					
 					for (int k = 0; k < studentList.size(); k++) {	
 						def groupAssignment = new GroupAssignment(student:studentList.get(k), team:groupList.get(k % groupNum))
+                                                
 						groupAssignment.save(flush: true)
 					}
 					
@@ -81,6 +83,9 @@ class TeamController {
 			}	
 	}
     
+        
+
+        
 
     def save = {
         def teamInstance = new Team(params)
@@ -148,17 +153,27 @@ class TeamController {
         if (teamInstance) {
             try {
                 teamInstance.delete(flush: true)
-                flash.message = "${message(code: 'team.deleted.message', args: [message(code: 'team.label', default: 'Team'), teamInstance.name])}"
+                flash.message = makeMessage('default.deleted.message', teamInstance.name)
                 redirect(action: 'list')
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'team.not.deleted.message', args: [message(code: 'team.label', default: 'Team'), teamInstance.name])}"
+                flash.message = makeMessage('default.not.deleted.message', params.id)
                 redirect(action: 'show', id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'team.label', default: 'Team'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
     }
+    
+    private makeMessage(code, teamId) {
+        return "${message(code: code, args: [teamLabel(), teamId])}"
+    }
+ 
+    private teamLabel() {
+        message(code: 'team.label', default: 'Team')
+    }
+    
+    
 }
