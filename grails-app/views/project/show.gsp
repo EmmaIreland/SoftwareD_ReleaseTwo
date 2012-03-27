@@ -109,6 +109,8 @@
 							<td><g:link controller="team" action="show" id="${k.id}">
 									${k?.encodeAsHTML()}
 								</g:link>
+								<g:checkBox name="groups" value="${fieldValue(bean:k, field:'randomize')}" />
+
 							</td>
 
 							<td valign="top" style="text-align: left;" class="value">
@@ -131,6 +133,7 @@
 			</table>
 			<div class="buttons">						
 				<span class="menuButton"><g:link class="create" controller="team" action="create" params="['projectId': projectInstance?.id]"><g:message code="Add Groups" args="[entityName]"/></g:link>
+				<span class="button"><g:actionSubmit name="reRandomize" class="save" action="reRandomize" value="${message(code: 'default.button.crate.label', default: 'Re-Randomize Selected Groups')}" /></span>
 				</span>
 			</div>
 
