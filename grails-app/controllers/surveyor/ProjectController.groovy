@@ -69,6 +69,32 @@ class ProjectController {
             redirect(action: 'list')
         }
     }
+    
+    
+ /*   
+    def reRandomize = {
+        def projectInstance = Project.get(params.id)
+        def groupsToRandomize
+        println 'HERE WE GO'
+        projectInstance.teams.each {
+            
+            it.delete()
+            groupsToRandomize++
+            println projectInstance.teams.size()
+        }
+        projectInstance.teams.each {
+            
+        }
+        def controller = new TeamController()
+        controller.params.groupNumber = 'groupsToRandomize'
+        controller.params.projectInstance = projectInstance 
+        controller.createAndSaveMany()
+    }
+    
+  */  
+    
+    
+    
     def delete = {
         def projectInstance = Project.get(params.id)
         if (projectInstance) {
