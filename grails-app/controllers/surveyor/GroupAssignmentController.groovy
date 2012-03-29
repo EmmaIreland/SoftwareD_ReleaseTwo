@@ -94,7 +94,7 @@ class GroupAssignmentController {
 
     def delete = {
         def groupAssignmentInstance = GroupAssignment.get(params.id)
-        def projectInstance = GroupAssignment.get(groupAssignmentInstance.team.project.id)
+        def projectInstance = groupAssignmentInstance.team.project
         if (groupAssignmentInstance) {
             try {
                 groupAssignmentInstance.delete(flush: true)
