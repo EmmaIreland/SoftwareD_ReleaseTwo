@@ -21,7 +21,7 @@ class GroupAssignmentController {
 
     def save = {
         def groupAssignmentInstance = new GroupAssignment(params)
-		def project = GroupAssignment.get(groupAssignmentInstance.team.project.id)
+	def project =groupAssignmentInstance.team.project
         if (groupAssignmentInstance.save(flush: true)) {
             flash.message = makeMessageStudentTeam('groupAssignment.created.message',  groupAssignmentInstance.id, groupAssignmentInstance.student, groupAssignmentInstance.team)
             redirect(action: 'show', id: project.id)
@@ -62,7 +62,7 @@ class GroupAssignmentController {
 
     def update = {
         def groupAssignmentInstance = GroupAssignment.get(params.id)
-	def project = GroupAssignment.get(groupAssignmentInstance.team.project.id)
+	def project = groupAssignmentInstance.team.project
         if (groupAssignmentInstance) {
             if (params.version) {
                 def version = params.version.toLong()
