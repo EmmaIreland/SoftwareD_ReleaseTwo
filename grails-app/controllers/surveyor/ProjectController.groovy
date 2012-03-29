@@ -52,7 +52,7 @@ class ProjectController {
                    
                     projectInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [message(code: 'project.label', default: 'Project')] as Object[], 'Another user has updated this Project while you were editing')
                     render(view: 'edit', model: [projectInstance: projectInstance])
-                    return
+                    
                 }
             }
             projectInstance.properties = params
@@ -71,27 +71,32 @@ class ProjectController {
     }
     
     
- /*   
-    def reRandomize = {
-        def projectInstance = Project.get(params.id)
-        def groupsToRandomize
-        println 'HERE WE GO'
-        projectInstance.teams.each {
-            
-            it.delete()
-            groupsToRandomize++
-            println projectInstance.teams.size()
-        }
-        projectInstance.teams.each {
-            
-        }
-        def controller = new TeamController()
-        controller.params.groupNumber = 'groupsToRandomize'
-        controller.params.projectInstance = projectInstance 
-        controller.createAndSaveMany()
-    }
+   
+//    def reRandomize = {
+//        def projectInstance = Project.get(params.id)
+//        def groupsToRandomize = 0
+//        println 'HERE WE GO'
+//        List listOfTeamsToDelete = []
+//        // def controller = new TeamController()
+//        
+//        
+//        projectInstance.teams.each {
+//            if(it.randomize) {
+//                controller.delete().it
+//                groupsToRandomize++
+//               // println projectInstance.teams.size()
+//            }
+//        }
+//        
+//        println groupsToRandomize
+//        params.groupNumber = groupsToRandomize.toString().toInteger()
+//        params.projectInstance = projectInstance 
+//        params.projectID = params.id
+//        params.id = null
+//        redirect(controller:"team", action:"createAndSaveRandom", params: params)
+//    }
     
-  */  
+   
     
     
     

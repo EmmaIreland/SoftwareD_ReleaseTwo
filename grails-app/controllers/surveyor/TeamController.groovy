@@ -3,10 +3,10 @@ package surveyor
 class TeamController {
 
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: 'POST', update: 'POST', delete: 'POST']
 
     def index = {
-        redirect(action: "list", params: params)
+        redirect(action: 'list', params: params)
     }
 
     def list = {
@@ -19,78 +19,83 @@ class TeamController {
         teamsInstance.properties = params
         return [teamsInstance: teamsInstance, courseID: params.projectId]
     }
-        
-        def createAndSaveMany = {
-                if (!isInteger(params.groupNumber)){
-                        flash.message = 'Please enter a positive integer'							
-                        redirect(action:"create", params:[projectId:params.id])              
-				} else {
-                        def groupNum = params.groupNumber.toInteger()
-                        def i
-                        for(i = 0; i < groupNum; i++) {
-                                def projectInstance = new Team(name:"Group ${i}", project: Project.findById(params.id))
-                                projectInstance.save(flush: true)
-                        }
-						
-                        flash.message = i + ' Empty Groups Created'
-                        redirect(controller: 'project', action: 'show', id: params.id)
-                }
+
+    def createAndSaveMany = {
+        if (!isInteger(params.groupNumber)){
+            flash.message = 'Please enter a positive integer'
+            redirect(action:'create', params:[projectId:params.id])
+        } else {
+            def groupNum = params.groupNumber.toInteger()
+            def i
+            for(i = 0; i < groupNum; i++) {
+                def projectInstance = new Team(name:"Group ${i}", project: Project.findById(params.id))
+                projectInstance.save(flush: true)
+            }
+
+            flash.message = i + ' Empty Groups Created'
+            redirect(controller: 'project', action: 'show', id: params.id)
         }
-        
-        private isInteger(num) {
-                def bool = false
-                if(num.isNumber() && (num.toInteger()>0)){
-                        bool = true
-                }
-                bool
-        } 
-		
-		
-		def createAndSaveRandom = {
-			def teamsInstance = new Team()
-			teamsInstance.properties = params
-			
-			if(!isInteger(params.groupNumber)) {
-					flash.message = 'Please enter a positive integer'
-					redirect(action:'create', params:[projectId:params.id])
-			}
-			else{
-					def groupNum = params.groupNumber.toInteger()
-					def i
-					List studentList = new ArrayList(new ArrayList(Project.findById(params.id).course.enrollments*.student))
-					List currentStudents = Project.findById(params.id).teams.groupAssignments*.student
-					for (int j = 0; j < currentStudents.size(); j++) {
-						studentList = studentList - currentStudents[j]
-					}
-								
-					
-					List groupList = []
-					for (i = 0; i < groupNum; i++) {
-						def currentTeam = new Team(name:"Group ${i}", project: Project.findById(params.id))
-                                                currentTeam.randomize = true
-						currentTeam.save(flush: true)
-						groupList.add(currentTeam)
-					}
-					
-					for (int k = 0; k < studentList.size(); k++) {	
-						def groupAssignment = new GroupAssignment(student:studentList.get(k), team:groupList.get(k % groupNum))
-                                                
-						groupAssignment.save(flush: true)
-					}
-					
-                                        flash.message = i + ' Groups Created'
-					redirect(controller: 'project', action: 'show', id: params.id)
-			}	
-	}
-    
+    }
+
+    private isInteger(num) {
+        def bool = false
+        if(num.isNumber() && (num.toInteger()>0)){
+            bool = true
+        }
+        bool
+    }
+
+
+    def createAndSaveRandom = {
+        def teamsInstance = new Team()
+        teamsInstance.properties = params
+
+    //    println 'The value of groupNumber is ' + params.groupNumber
+    //    println 'The class of groupNumber is ' + params.groupNumber.class
         
 
+        if(!isInteger(params.groupNumber)) {
+            flash.message = 'Please enter a positive integer'
+            redirect(action:'create', params:[projectId:params.id])
+        }
         
+        else{
+            def groupNum = params.groupNumber.toInteger()
+            def i
+            List studentList = new ArrayList(new ArrayList(Project.findById(params.id).course.enrollments*.student))
+            List currentStudents = Project.findById(params.id).teams.groupAssignments*.student
+            for (int j = 0; j < currentStudents.size(); j++) {
+                studentList = studentList - currentStudents[j]
+            }
+
+
+            List groupList = []
+            for (i = 0; i < groupNum; i++) {
+                def currentTeam = new Team(name:"Group ${i}", project: Project.findById(params.id))
+               // currentTeam.randomize = true
+                currentTeam.save(flush: true)
+                groupList.add(currentTeam)
+            }
+
+            for (int k = 0; k < studentList.size(); k++) {
+                def groupAssignment = new GroupAssignment(student:studentList.get(k), team:groupList.get(k % groupNum))
+
+                groupAssignment.save(flush: true)
+            }
+
+            flash.message = i + ' Groups Created'
+            redirect(controller: 'project', action: 'show', id: params.id)
+        }
+    }
+
+
+
+
 
     def save = {
         def teamInstance = new Team(params)
         if (teamInstance.save(flush: true)) {
-            flash.message = "${message(code: 'team.created.message', args: [message(code: 'team.label', default: 'Team'), teamInstance.name])}"
+            flash.message = makeMessage('default.created.message', teamInstance.name)
             redirect(action: 'show', id: teamInstance.id)
         }
         else {
@@ -101,11 +106,11 @@ class TeamController {
     def show = {
         def teamInstance = Team.get(params.id)
         if (!teamInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'team.label', default: 'Team'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
         else {
-            
+
             [teamInstance: teamInstance, sortedGroupAssignments: teamInstance.sortedGroupAssignments]
         }
     }
@@ -113,7 +118,7 @@ class TeamController {
     def edit = {
         def teamInstance = Team.get(params.id)
         if (!teamInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'team.label', default: 'Team'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
         else {
@@ -127,15 +132,17 @@ class TeamController {
             if (params.version) {
                 def version = params.version.toLong()
                 if (teamInstance.version > version) {
-                    
-                    teamInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [message(code: 'team.label', default: 'Team')] as Object[], 'Another user has updated this Team while you were editing')
+
+                    teamInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [
+                        message(code: 'team.label', default: 'Team')]
+                    as Object[], 'Another user has updated this Team while you were editing')
                     render(view: 'edit', model: [teamInstance: teamInstance])
                     return
                 }
             }
             teamInstance.properties = params
             if (!teamInstance.hasErrors() && teamInstance.save(flush: true)) {
-                flash.message = "${message(code: 'team.updated.message', args: [message(code: 'team.label', default: 'Team'), teamInstance.name])}"
+                flash.message = makeMessage('default.updated.message', teamInstance.name)
                 redirect(action: 'show', id: teamInstance.id)
             }
             else {
@@ -143,7 +150,7 @@ class TeamController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'team.label', default: 'Team'), params.id])}"
+            flash.message = makeMessage('default.not.found.message', params.id)
             redirect(action: 'list')
         }
     }
@@ -166,14 +173,12 @@ class TeamController {
             redirect(action: 'list')
         }
     }
-    
+
     private makeMessage(code, teamId) {
         return "${message(code: code, args: [teamLabel(), teamId])}"
     }
- 
+
     private teamLabel() {
         message(code: 'team.label', default: 'Team')
     }
-    
-    
 }
