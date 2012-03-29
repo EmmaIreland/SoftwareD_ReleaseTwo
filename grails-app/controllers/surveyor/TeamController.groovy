@@ -2,11 +2,17 @@ package surveyor
 
 class TeamController {
 
-
-    static allowedMethods = [save: 'POST', update: 'POST', delete: 'POST']
+	static def post = 'POST'
+	def listString = 'list'
+	def editString = 'edit'
+	def createString = 'create'
+	def showString = 'show'
+	def defaultNotFoundMessage = 'default.not.found.message'
+	
+    static allowedMethods = [save: post, update: post, delete: post]
 
     def index = {
-        redirect(action: 'list', params: params)
+        redirect(action: listString, params: params)
     }
 
     def list = {
@@ -23,7 +29,7 @@ class TeamController {
     def createAndSaveMany = {
         if (!isInteger(params.groupNumber)){
             flash.message = 'Please enter a positive integer'
-            redirect(action:'create', params:[projectId:params.id])
+            redirect(action:createString, params:[projectId:params.id])
         } else {
             def groupNum = params.groupNumber.toInteger()
             def i
@@ -33,7 +39,7 @@ class TeamController {
             }
 
             flash.message = i + ' Empty Groups Created'
-            redirect(controller: 'project', action: 'show', id: params.id)
+            redirect(controller: 'project', action: showString, id: params.id)
         }
     }
 
@@ -56,7 +62,7 @@ class TeamController {
 
         if(!isInteger(params.groupNumber)) {
             flash.message = 'Please enter a positive integer'
-            redirect(action:'create', params:[projectId:params.id])
+            redirect(action:createString, params:[projectId:params.id])
         }
         
         else{
@@ -84,7 +90,7 @@ class TeamController {
             }
 
             flash.message = i + ' Groups Created'
-            redirect(controller: 'project', action: 'show', id: params.id)
+            redirect(controller: 'project', action: showString, id: params.id)
         }
     }
 
@@ -96,18 +102,18 @@ class TeamController {
         def teamInstance = new Team(params)
         if (teamInstance.save(flush: true)) {
             flash.message = makeMessage('default.created.message', teamInstance.name)
-            redirect(action: 'show', id: teamInstance.id)
+            redirect(action: showString, id: teamInstance.id)
         }
         else {
-            render(view: 'create', model: [teamInstance: teamInstance])
+            render(view: createString, model: [teamInstance: teamInstance])
         }
     }
 
     def show = {
         def teamInstance = Team.get(params.id)
         if (!teamInstance) {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
         else {
 
@@ -118,8 +124,8 @@ class TeamController {
     def edit = {
         def teamInstance = Team.get(params.id)
         if (!teamInstance) {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
         else {
             return [teamInstance: teamInstance, sortedGroupAssignments: teamInstance.sortedGroupAssignments]
@@ -136,22 +142,22 @@ class TeamController {
                     teamInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [
                         message(code: 'team.label', default: 'Team')]
                     as Object[], 'Another user has updated this Team while you were editing')
-                    render(view: 'edit', model: [teamInstance: teamInstance])
+                    render(view: editString, model: [teamInstance: teamInstance])
                     return
                 }
             }
             teamInstance.properties = params
             if (!teamInstance.hasErrors() && teamInstance.save(flush: true)) {
                 flash.message = makeMessage('default.updated.message', teamInstance.name)
-                redirect(action: 'show', id: teamInstance.id)
+                redirect(action: showString, id: teamInstance.id)
             }
             else {
-                render(view: 'edit', model: [teamInstance: teamInstance])
+                render(view: editString, model: [teamInstance: teamInstance])
             }
         }
         else {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
     }
 
@@ -161,16 +167,16 @@ class TeamController {
             try {
                 teamInstance.delete(flush: true)
                 flash.message = makeMessage('default.deleted.message', teamInstance.name)
-                redirect(action: 'list')
+                redirect(action: listString)
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = makeMessage('default.not.deleted.message', params.id)
-                redirect(action: 'show', id: params.id)
+                redirect(action: showString, id: params.id)
             }
         }
         else {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
     }
 
