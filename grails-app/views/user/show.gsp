@@ -46,7 +46,6 @@
                                     <li><g:link controller="course" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
-                                <g:link url="[action:'create', controller:'course']">Create A New Course</g:link>
                             </td>
                             
                         </tr>
@@ -60,7 +59,6 @@
                                     <li><g:link controller="enrollment" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
-                                <g:link url="[action:'create', controller:'enrollment']">Enroll In A Course</g:link>
                             </td>
                             
                         </tr>
@@ -74,7 +72,6 @@
                                     <li><g:link controller="groupAssignment" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
-                                <g:link url="[action:'create', controller:'groupAssignment']">Join A Group</g:link>
                             </td>
                             
                         </tr>
