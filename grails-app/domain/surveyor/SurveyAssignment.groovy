@@ -7,4 +7,8 @@ class SurveyAssignment {
     static constraints = {
            student unique: 'survey'
     }
+	
+	String toString() {
+		student + " assigned to take " + survey
+	}
 }

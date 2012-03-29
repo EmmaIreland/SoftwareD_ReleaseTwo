@@ -17,7 +17,7 @@ class Survey {
 			}
 		}
 		studentAssignments nullable: true
-                questions nullable: true
+        questions nullable: true
 	}
 
 	String toString() {

@@ -6,4 +6,8 @@ class ShortResponseAnswer extends Answer {
 
     static constraints = {
     }
+	
+	String toString() {
+		answer
+	}
 }

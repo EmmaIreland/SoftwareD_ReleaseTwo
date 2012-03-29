@@ -6,4 +6,8 @@ class LongResponseAnswer extends Answer{
 
     static constraints = {
     }
+	
+	String toString() {
+		answer
+	}
 }

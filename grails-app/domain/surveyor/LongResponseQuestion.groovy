@@ -4,7 +4,11 @@ class LongResponseQuestion extends Question{
 
     static hasMany = [longResponseAnswer: LongResponseAnswer]
     
-    
     static constraints = {
     }
+	
+	String toString() {
+		question
+	}
+	
 }

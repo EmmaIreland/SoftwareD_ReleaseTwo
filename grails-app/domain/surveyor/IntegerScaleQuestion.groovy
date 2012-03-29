@@ -6,4 +6,9 @@ class IntegerScaleQuestion extends Question{
     
     static constraints = {
     }
+	
+	String toString() {
+		question
+	}
+	
 }

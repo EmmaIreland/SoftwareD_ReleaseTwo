@@ -7,4 +7,8 @@ class MultipleChoiceAnswer extends Answer {
     
     static constraints = {
     }
+	
+	String toString() {
+		answer
+	}
 }
