@@ -56,7 +56,7 @@
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
                                 <g:each in="${userInstance.enrollments.course}" var="e">
-                                    <li><g:link controller="enrollment" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
+                                    <li><g:link controller="course" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
                             </td>
@@ -69,7 +69,7 @@
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
                                 <g:each in="${userInstance.groupAssignments.team}" var="g">
-                                    <li><g:link controller="groupAssignment" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></li>
+                                    <li><g:link controller="team" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></li>
                                 </g:each>
                                 </ul>
                             </td>
