@@ -1,11 +1,17 @@
 package surveyor
 
 class SurveyController {
-
-    static allowedMethods = [save: 'POST', update: 'POST', delete: 'POST']
+	static def post = 'POST'
+	def listString = 'list'
+	def editString = 'edit'
+	def createString = 'create'
+	def showString = 'show'
+	def defaultNotFoundMessage = 'default.not.found.message'
+	
+    static allowedMethods = [save: post, update: post, delete: post]
 
     def index = {
-        redirect(action: 'list', params: params)
+        redirect(action: listString, params: params)
     }
 
     def list = {
@@ -23,18 +29,18 @@ class SurveyController {
         def surveyInstance = new Survey(params)
         if (surveyInstance.save(flush: true)) {
             flash.message = makeMessage('default.created.message', surveyInstance.name)
-            redirect(action: 'show', id: surveyInstance.id)
+            redirect(action: showString, id: surveyInstance.id)
         }
         else {
-            render(view: 'create', model: [surveyInstance: surveyInstance])
+            render(view: createString, model: [surveyInstance: surveyInstance])
         }
     }
 
     def show = {
         def surveyInstance = Survey.get(params.id)
         if (!surveyInstance) {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
         else {
             [surveyInstance: surveyInstance]
@@ -44,8 +50,8 @@ class SurveyController {
     def edit = {
         def surveyInstance = Survey.get(params.id)
         if (!surveyInstance) {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
         else {
             return [surveyInstance: surveyInstance]
@@ -60,22 +66,22 @@ class SurveyController {
                 if (surveyInstance.version > version) {
                     
                     surveyInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [message(code: 'survey.label', default: 'Survey')] as Object[], 'Another user has updated this Survey while you were editing')
-                    render(view: 'edit', model: [surveyInstance: surveyInstance])
+                    render(view: editString, model: [surveyInstance: surveyInstance])
                     return
                 }
             }
             surveyInstance.properties = params
             if (!surveyInstance.hasErrors() && surveyInstance.save(flush: true)) {
                 flash.message = makeMessage('default.updated.message', surveyInstance.name)
-                redirect(action: 'show', id: surveyInstance.id)
+                redirect(action: showString, id: surveyInstance.id)
             }
             else {
-                render(view: 'edit', model: [surveyInstance: surveyInstance])
+                render(view: editString, model: [surveyInstance: surveyInstance])
             }
         }
         else {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
     }
 
@@ -85,16 +91,16 @@ class SurveyController {
             try {
                 surveyInstance.delete(flush: true)
                 flash.message = makeMessage('default.deleted.message', surveyInstance.name)
-                redirect(action: 'list')
+                redirect(action: listString)
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = makeMessage('default.not.deleted.message', params.id)
-                redirect(action: 'show', id: params.id)
+                redirect(action: showString, id: params.id)
             }
         }
         else {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
     }
 	private makeMessage(code, surveyId) {
