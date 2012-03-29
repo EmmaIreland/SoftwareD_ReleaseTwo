@@ -1,8 +1,18 @@
 package surveyor
 class ProjectController {
-    static allowedMethods = [save: 'POST', update: 'POST', delete: 'POST']
+	
+	static def post = 'POST'
+	def listString = 'list'
+	def editString = 'edit'
+	def createString = 'create'
+	def showString = 'show'
+	def projectString = 'project'
+	def defaultNotFoundMessage = 'default.not.found.message'
+	
+    static allowedMethods = [save: post, update: post, delete: post]
+	
     def index = {
-        redirect(action: 'list', params: params)
+        redirect(action: listString, params: params)
     }
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
@@ -17,17 +27,17 @@ class ProjectController {
         def projectInstance = new Project(params)
         if (projectInstance.save(flush: true)) {
             flash.message = makeMessage('default.created.message', projectInstance.name)
-            redirect(action: 'show', id: projectInstance.id)
+            redirect(action: showString, id: projectInstance.id)
         }
         else {
-            render(view: 'create', model: [projectInstance: projectInstance])
+            render(view: createString, model: [projectInstance: projectInstance])
         }
     }
     def show = {
         def projectInstance = Project.get(params.id)
         if (!projectInstance) {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
         else {
             [projectInstance: projectInstance]
@@ -36,8 +46,8 @@ class ProjectController {
     def edit = {
         def projectInstance = Project.get(params.id)
         if (!projectInstance) {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
         else {
             return [projectInstance: projectInstance]
@@ -50,23 +60,23 @@ class ProjectController {
                 def version = params.version.toLong()
                 if (projectInstance.version > version) {
                    
-                    projectInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [message(code: 'project.label', default: 'Project')] as Object[], 'Another user has updated this Project while you were editing')
-                    render(view: 'edit', model: [projectInstance: projectInstance])
+                    projectInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [message(code: 'project.label', default: projectString)] as Object[], 'Another user has updated this Project while you were editing')
+                    render(view: editString, model: [projectInstance: projectInstance])
                     
                 }
             }
             projectInstance.properties = params
             if (!projectInstance.hasErrors() && projectInstance.save(flush: true)) {
                 flash.message = makeMessage('default.updated.message',projectInstance.name)
-                redirect(action: 'show', id: projectInstance.id)
+                redirect(action: showString, id: projectInstance.id)
             }
             else {
-                render(view: 'edit', model: [projectInstance: projectInstance])
+                render(view: editString, model: [projectInstance: projectInstance])
             }
         }
         else {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
     }
     
@@ -106,16 +116,16 @@ class ProjectController {
             try {
                 projectInstance.delete(flush: true)
                 flash.message = makeMessage('default.deleted.message', projectInstance.name)
-                redirect(action: 'list')
+                redirect(action: listString)
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = makeMessage('default.not.deleted.message', projectInstance.name)
-                redirect(action: 'show', id: params.id)
+                redirect(action: showString, id: params.id)
             }
         }
         else {
-            flash.message = makeMessage('default.not.found.message', params.id)
-            redirect(action: 'list')
+            flash.message = makeMessage(defaultNotFoundMessage, params.id)
+            redirect(action: listString)
         }
     }
 	
@@ -124,6 +134,6 @@ class ProjectController {
 	}
  
 	private projectLabel() {
-		message(code: 'project.label', default: 'Project')
+		message(code: 'project.label', default: projectString)
 	}
 }
