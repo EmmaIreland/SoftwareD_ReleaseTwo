@@ -36,7 +36,7 @@
                                   <label for="student"><g:message code="groupAssignment.student.label" default="Student" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: groupAssignmentInstance, field: 'student', 'errors')}">
-                                    <g:select name="student.id" from="${surveyor.User.list()}" optionKey="id" value="${groupAssignmentInstance?.student?.id}"  />
+                                    <g:select name="student.id" from="${studentList}" optionKey="id" value="${groupAssignmentInstance?.student?.id}"  />
                                 </td>
                             </tr>
                         
@@ -45,7 +45,7 @@
                                   <label for="team"><g:message code="groupAssignment.team.label" default="Group" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: groupAssignmentInstance, field: 'team', 'errors')}">
-                                    <g:select name="team.id" from="${surveyor.Team.list()}" optionKey="id" value="${groupAssignmentInstance?.team?.id}"  />
+                                    <g:select name="team.id" from="${groupsInProject}" optionKey="id" value="${groupAssignmentInstance?.team?.id}"  />
                                 </td>
                             </tr>
                         

@@ -22,7 +22,7 @@ class GroupAssignmentController {
     def save = {
         def groupAssignmentInstance = new GroupAssignment(params)
         if (groupAssignmentInstance.save(flush: true)) {
-            flash.message = makeMessage('default.created.message', groupAssignmentInstance.id)
+            flash.message = makeMessageStudentTeam('groupAssignment.created.message',  groupAssignmentInstance.id, groupAssignmentInstance.student, groupAssignmentInstance.team)
             redirect(action: 'show', id: groupAssignmentInstance.id)
         }
         else {
@@ -48,13 +48,20 @@ class GroupAssignmentController {
             redirect(action: 'list')
         }
         else {
-            return [groupAssignmentInstance: groupAssignmentInstance]
+            def teamInstance = Team.findById(params.teamId)
+            def projectInstance = teamInstance.project
+            List groupsInProject = new ArrayList(projectInstance.teams)
+            
+            List studentList = new ArrayList(new ArrayList(projectInstance.course.enrollments*.student))
+
+            return [groupAssignmentInstance: groupAssignmentInstance, 
+                    groupsInProject: groupsInProject, studentList: studentList]
         }
     }
 
     def update = {
         def groupAssignmentInstance = GroupAssignment.get(params.id)
-		def projectInstance = GroupAssignment.get(groupAssignmentInstance.team.project.id)
+	def project = GroupAssignment.get(groupAssignmentInstance.team.project.id)
         if (groupAssignmentInstance) {
             if (params.version) {
                 def version = params.version.toLong()
@@ -67,11 +74,15 @@ class GroupAssignmentController {
             }
             groupAssignmentInstance.properties = params
             if (!groupAssignmentInstance.hasErrors() && groupAssignmentInstance.save(flush: true)) {
-            flash.message = makeMessage('default.updated.message', groupAssignmentInstance.id)
-                redirect(controller: 'project', action: 'show', id: projectInstance.id)
+            flash.message = makeMessageStudentTeam('groupAssignment.updated.message', groupAssignmentInstance.id, groupAssignmentInstance.student, groupAssignmentInstance.team)
+                redirect(controller: 'project', action: 'show', id: project.id)
             }
             else {
-                render(view: 'edit', model: [groupAssignmentInstance: groupAssignmentInstance])
+                List groupsInProject = new ArrayList(Project.findById(project.id).teams)               
+                List studentList = new ArrayList(new ArrayList(Project.findById(project.id).course.enrollments*.student))
+               
+                 render(view: 'edit', model: [groupAssignmentInstance: groupAssignmentInstance, 
+                     groupsInProject: groupsInProject,studentList: studentList])
             }
         }
         else {
@@ -86,7 +97,7 @@ class GroupAssignmentController {
         if (groupAssignmentInstance) {
             try {
                 groupAssignmentInstance.delete(flush: true)
-            flash.message = makeMessage('default.deleted.message', groupAssignmentInstance.id)
+            flash.message = makeMessageStudentTeam('groupAssignment.deleted.message', groupAssignmentInstance.id,groupAssignmentInstance.student, groupAssignmentInstance.team)
                 redirect(controller: 'project', action: 'show', id: projectInstance.id)
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
@@ -103,6 +114,11 @@ class GroupAssignmentController {
 	private makeMessage(code, groupAssignmentId) {
 		return "${message(code: code, args: [groupAssignmentLabel(), groupAssignmentId])}"
 	}
+    
+        private makeMessageStudentTeam(code, groupAssignmentId,
+            groupAssignmentStudent, groupAssignmentTeam) {
+            return "${message(code: code, args: [groupAssignmentLabel(), groupAssignmentId,groupAssignmentStudent, groupAssignmentTeam])}"
+        }
  
 	private groupAssignmentLabel() {
 		message(code: 'groupAssignment.label', default: 'GroupAssignment')

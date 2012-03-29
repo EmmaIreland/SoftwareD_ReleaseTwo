@@ -67,7 +67,7 @@
 
 						<tr class="prop">
 							<td valign="top" class="name"><label for="groupAssignments"><g:message
-										code="team.groupAssignments.label" default="Group Assignments" />
+										code="team.groupAssignments.label" default="Students in Group" />
 							</label></td>
 							<td valign="top"
 								class="value ${hasErrors(bean: teamInstance, field: 'groupAssignments', 'errors')}">
@@ -75,7 +75,7 @@
 								<ul>
 									<g:each in="${teamInstance?.groupAssignments?}" var="g">
 										<li><g:link controller="user" action="show" id="${g.student.id}">${g?.student.toLastNameFirstName().encodeAsHTML()}	</g:link> 
-										(<g:link controller="groupAssignment" action="edit"	params="[id : g.id]" id="${g.id}">Update or Delete</g:link>)
+										(<g:link controller="groupAssignment" action="edit"	params="['teamId': teamInstance?.id]" id="${g.id}">Update or Delete</g:link>)
 
 
 										</li>
