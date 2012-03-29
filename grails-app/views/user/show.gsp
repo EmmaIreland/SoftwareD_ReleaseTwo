@@ -38,7 +38,7 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="user.courses.label" default="Courses" /></td>
+                            <td valign="top" class="name"><g:message code="user.courses.label" default="Courses Managed" /></td>
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
@@ -64,7 +64,7 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="user.groupAssignments.label" default="Group Assignments" /></td>
+                            <td valign="top" class="name"><g:message code="user.groupAssignments.label" default="Assigned Groups" /></td>
                             
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>

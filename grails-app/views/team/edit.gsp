@@ -16,13 +16,8 @@
 			href="${createLink(uri: '/')}"><g:message
 					code="default.home.label" />
 		</a>
-		</span> <span class="menuButton"><g:link class="list" action="list">
-				<g:message code="Group List" args="[entityName]" />
-			</g:link>
-		</span> <span class="menuButton"><g:link class="create"
-				action="create">
-				<g:message code="New Group" args="[entityName]" />
-			</g:link>
+		</span> <span class="menuButton"><g:link class="list" action="list"><g:message code="Group List" args="[entityName]" />			</g:link></span> 
+			<span class="menuButton"><g:link class="create"	action="create"><g:message code="New Group" args="[entityName]" /></g:link>
 		</span>
 	</div>
 	<div class="body">
@@ -80,10 +75,7 @@
 
 										</li>
 									</g:each>
-								</ul> <g:link controller="groupAssignment" action="create"
-									params="['team.id': teamInstance?.id]">
-									${message(code: 'default.add.label', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment')])}
-								</g:link></td>
+								</ul> </td>
 						</tr>
 
 						<tr class="prop">

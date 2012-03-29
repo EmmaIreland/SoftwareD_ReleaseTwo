@@ -21,9 +21,10 @@ class GroupAssignmentController {
 
     def save = {
         def groupAssignmentInstance = new GroupAssignment(params)
+		def project = GroupAssignment.get(groupAssignmentInstance.team.project.id)
         if (groupAssignmentInstance.save(flush: true)) {
             flash.message = makeMessageStudentTeam('groupAssignment.created.message',  groupAssignmentInstance.id, groupAssignmentInstance.student, groupAssignmentInstance.team)
-            redirect(action: 'show', id: groupAssignmentInstance.id)
+            redirect(action: 'show', id: project.id)
         }
         else {
             render(view: 'create', model: [groupAssignmentInstance: groupAssignmentInstance])

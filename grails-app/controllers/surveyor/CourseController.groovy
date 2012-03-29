@@ -58,7 +58,6 @@ class CourseController {
 			List allUsers = new ArrayList(User.list())
 			List allUsersExceptOwner = []
 
-
 			allUsers = allUsers - courseInstance.enrollments*.student
 
 			for(int i = 0; i < allUsers.size; i++){

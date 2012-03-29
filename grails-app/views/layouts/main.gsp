@@ -19,7 +19,6 @@
 					<li class="controller"><g:link controller="course">Courses</g:link></li>
 					<li class="controller"><g:link controller="project">Projects</g:link></li>
 					<li class="controller"><g:link controller="team">Groups</g:link></li>
-					<li class="controller"><g:link controller="survey">Surveys</g:link></li>
 					<li class="controller"><g:link controller="user">Users</g:link></li>
                 </ul>
                 </div>

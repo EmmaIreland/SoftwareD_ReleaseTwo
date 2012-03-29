@@ -6,7 +6,7 @@ class ProjectController {
 	def editString = 'edit'
 	def createString = 'create'
 	def showString = 'show'
-	def projectString = 'project'
+	def projectString = 'Project'
 	def defaultNotFoundMessage = 'default.not.found.message'
 	
     static allowedMethods = [save: post, update: post, delete: post]
