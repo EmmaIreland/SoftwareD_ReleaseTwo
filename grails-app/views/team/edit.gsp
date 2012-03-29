@@ -75,6 +75,23 @@
 
 										</li>
 									</g:each>
+									
+									
+									
+									
+									
+									</ul> <g:link controller="groupAssignment" action="create" 
+	 	                                                                        params="['team.id': teamInstance?.id]"> 
+	 	                                                                        ${message(code: 'default.add.label', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment')])} 
+	 	                                                                </g:link></td> 
+									
+									
+									
+									
+									
+									
+									
+									
 								</ul> </td>
 						</tr>
 

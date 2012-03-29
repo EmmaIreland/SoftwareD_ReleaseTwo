@@ -49,7 +49,7 @@ class GroupAssignmentController {
             redirect(action: 'list')
         }
         else {
-            def teamInstance = Team.findById(params.teamId)
+            def teamInstance = groupAssignmentInstance.team
             def projectInstance = teamInstance.project
             List groupsInProject = new ArrayList(projectInstance.teams)
             
