@@ -8,7 +8,7 @@ class BootStrap {
 
     def init = { servletContext ->
         if (noData()) {
-            
+            int i= 0
 			
 			User nic = new User(name: 'Nic McPhee', email: 'mcphee@gmail.com')
             User sarah = new User(name: 'Sarah Buchanan', email: 'buchanan@gmail.com')
@@ -27,7 +27,7 @@ class BootStrap {
             User bill = new User(name: 'Bill Gates', email: 'gates@microsoft.com')
             User albert = new User(name: 'Albert Einstein', email: 'einstein@gmail.com')
             User[] students = [nic, sarah, simon, phou, chris, kevin, josh, matthew, emma, christopher, ian, steve, matt, annabel, bill, albert]
-			for(int i = 0; i < students.length; i++){
+			for(i = 0; i < students.length; i++){
 				students[i].save(failOnError:true)
 			}
 			
@@ -35,7 +35,7 @@ class BootStrap {
             Course musicTheory = new Course(abbreviation:'MUS 1001', name:'Music Theory', term:'Fall',year:'2013', owner: simon)
             Course frenchI = new Course(abbreviation:'FREN 1001', name:'French I', term:'May',year:'2014', owner: sarah)
 			Course[] courses = [softwareDesign, musicTheory, frenchI]
-			for(int i = 0; i < courses.length; i++){
+			for(i = 0; i < courses.length; i++){
 				courses[i].save(failOnError:true)
 			}
 			
@@ -59,7 +59,7 @@ class BootStrap {
 	            Enrollment annabelInBeginningFrench = new Enrollment(course: frenchI, student: annabel)
 			
 			Enrollment[] enrollments = [kevinInSoftwareDesign, phouInSoftwareDesign, chrisInSoftwareDesign,joshInSoftwareDesign, matthewInSoftwareDesign, emmaInSoftwareDesign, christopherInSoftwareDesign, ianInSoftwareDesign, mattInSoftwareDesign, phouInMusicTheory, billInMusicTheory, mattInMusicTheory, albertInMusicTheory, chrisInBeginningFrench, annabelInBeginningFrench]
-			for(int i = 0; i < enrollments.length; i++){
+			for(i = 0; i < enrollments.length; i++){
 				enrollments[i].save(failOnError:true)
 			}
             
@@ -67,7 +67,7 @@ class BootStrap {
             Project imparfait = new Project(name: 'The Imparfait', description: 'Vous apprenderez l\'imparfait', course: frenchI)
             Project releaseOne = new Project(name: 'Release One', description: '', course: softwareDesign)
             Project[] project = [ninthSymphony, imparfait, releaseOne]
-			for(int i = 0; i < project.length; i++){
+			for(i = 0; i < project.length; i++){
 				project[i].save(failOnError:true)
 			}
 			
@@ -76,7 +76,7 @@ class BootStrap {
             Team prodigies = new Team(name: 'Child Prodigies', project: ninthSymphony)
 			Team frenchies = new Team(name: 'We Like France', project: imparfait)
 			Team[] team = [camelCase, amish, prodigies, frenchies]
-			for(int i = 0; i < team.length; i++){
+			for(i = 0; i < team.length; i++){
 				team[i].save(failOnError:true)
 			}
             
@@ -91,7 +91,7 @@ class BootStrap {
 	            GroupAssignment albertToProdigies = new GroupAssignment(student: albert, team: prodigies)
 	            GroupAssignment billToProdigies = new GroupAssignment(student: bill, team: prodigies)
 				GroupAssignment[] groupAssignment = [kevinToCamelCase, chrisToCamelCase, phouToCamelCase, joshToCamelCase, matthewToAmish, emmaToAmish,christopherToAmish,ianToAmish,albertToProdigies,billToProdigies]
-				for(int i = 0; i < groupAssignment.length; i++){
+				for(i = 0; i < groupAssignment.length; i++){
 					groupAssignment[i].save(failOnError:true)
 				}
         }
