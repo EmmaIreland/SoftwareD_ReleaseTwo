@@ -48,54 +48,7 @@
                                     <g:textField name="email" value="${userInstance?.email}" />
                                 </td>
                             </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="courses"><g:message code="user.courses.label" default="Courses" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'courses', 'errors')}">
-                                    
-<ul>
-<g:each in="${userInstance?.courses?}" var="c">
-    <li><g:link controller="course" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="course" action="create" params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'course.label', default: 'Course')])}</g:link>
-
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="enrollments"><g:message code="user.enrollments.label" default="Enrollments" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'enrollments', 'errors')}">
-                                    
-<ul>
-<g:each in="${userInstance?.enrollments?}" var="e">
-    <li><g:link controller="enrollment" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="enrollment" action="create" params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'enrollment.label', default: 'Enrollment')])}</g:link>
-
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="groupAssignments"><g:message code="user.groupAssignments.label" default="Group Assignments" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'groupAssignments', 'errors')}">
-                                    
-<ul>
-<g:each in="${userInstance?.groupAssignments?}" var="g">
-    <li><g:link controller="groupAssignment" action="show" id="${g.id}">${g?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="groupAssignment" action="create" params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'groupAssignment.label', default: 'GroupAssignment')])}</g:link>
-
-                                </td>
-                            </tr>
+ 
                         
                         </tbody>
                     </table>
