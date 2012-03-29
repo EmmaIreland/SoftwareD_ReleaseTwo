@@ -1,11 +1,18 @@
 package surveyor
 
 class CourseController {
+	
+	static def post = 'POST'
+	def listString = 'list'
+	def editString = 'edit'
+	def createString = 'create'
+	def showString = 'show'
+	def defaultNotFoundMessage = 'default.not.found.message'
 
-	static allowedMethods = [save: 'POST', update: 'POST', delete: 'POST']
+	static allowedMethods = [save: post, update: post, delete: post]
 
 	def index = {
-		redirect(action: 'list', params: params)
+		redirect(action: listString, params: params)
 	}
 
 	def list = {
@@ -23,18 +30,18 @@ class CourseController {
 		def courseInstance = new Course(params)
 		if (courseInstance.save(flush: true)) {
 				flash.message = makeMessage('default.created.message', courseInstance.toString())
-			redirect(action: 'show', id: courseInstance.id)
+			redirect(action: showString, id: courseInstance.id)
 		}
 		else {
-			render(view: 'create', model: [courseInstance: courseInstance])
+			render(view: createString, model: [courseInstance: courseInstance])
 		}
 	}
 
 	def show = {
 		def courseInstance = Course.get(params.id)
 		if (!courseInstance) {
-			flash.message = makeMessage('default.not.found.message', params.id)
-			redirect(action: 'list')
+			flash.message = makeMessage(defaultNotFoundMessage, params.id)
+			redirect(action: listString)
 		}
 		else {
 			[courseInstance: courseInstance, sortedEnrollments: courseInstance.sortedEnrollments]
@@ -44,8 +51,8 @@ class CourseController {
 	def edit = {
 		def courseInstance = Course.get(params.id)
 		if (!courseInstance) {
-			flash.message = makeMessage('default.not.found.message', params.id)
-			redirect(action: 'list')
+			flash.message = makeMessage(defaultNotFoundMessage, params.id)
+			redirect(action: listString)
 		}
 		else {
 			List allUsers = new ArrayList(User.list())
@@ -78,7 +85,7 @@ class CourseController {
 					courseInstance.errors.rejectValue('version', 'default.optimistic.locking.failure', [
 						message(code: 'course.label', default: 'Course')]
 					as Object[], 'Another user has updated this Course while you were editing')
-					render(view: 'edit', model: [courseInstance: courseInstance])
+					render(view: editString, model: [courseInstance: courseInstance])
 					return
 				}
 			}
@@ -114,10 +121,10 @@ class CourseController {
 				}
 
 				flash.message = makeMessage('default.updated.message', courseInstance.toString())
-				redirect(action: 'show', id: courseInstance.id)
+				redirect(action: showString, id: courseInstance.id)
 			}
 			else {
-				render(view: 'edit', model: [courseInstance: courseInstance,
+				render(view: editString, model: [courseInstance: courseInstance,
 					sortedEnrollments: courseInstance.sortedEnrollments,
 					newStudents: studentIds,
 					enrollmentErrorIds: enrollmentErrorIds,
@@ -125,8 +132,8 @@ class CourseController {
 			}
 		}
 		else {
-			flash.message = makeMessage('default.not.found.message', params.id)
-			redirect(action: 'list')
+			flash.message = makeMessage(defaultNotFoundMessage, params.id)
+			redirect(action: listString)
 		}
 	}
 
@@ -136,16 +143,16 @@ class CourseController {
 			try {
 				courseInstance.delete(flush: true)
 				flash.message = makeMessage('default.deleted.message', courseInstance.toString())
-				redirect(action: 'list')
+				redirect(action: listString)
 			}
 			catch (org.springframework.dao.DataIntegrityViolationException e) {
 				flash.message = makeMessage('default.not.deleted.message', courseInstance.toString())
-				redirect(action: 'show', id: params.id)
+				redirect(action: showString, id: params.id)
 			}
 		}
 		else {
-			flash.message = makeMessage('default.not.found.message', params.id)
-			redirect(action: 'list')
+			flash.message = makeMessage(defaultNotFoundMessage, params.id)
+			redirect(action: listString)
 		}
 	}
 
